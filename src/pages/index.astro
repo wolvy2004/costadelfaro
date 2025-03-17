@@ -1,0 +1,35 @@
+---
+import Cabecera from "../components/Cabecera.astro";
+import Layout from "../layouts/Layout.astro";
+const links = [
+  "Home",
+  "Aparts",
+  "Servicios",
+  "Galeria",
+  "Tarifas",
+  "Reservas",
+  "Contacto",
+  "Oportunidad",
+];
+const componentesImportados = await Promise.all(
+  links.map((nombre) => import(`../components/${nombre}.astro`))
+);
+---
+
+<Layout title="Bienvenidos a Costa del Faro">
+  <Cabecera links={links} slot="cabecera" />
+  {
+    componentesImportados.map((Comp, index) => (
+      <Comp.default id={links[index]} />
+    ))
+  }
+</Layout>
+
+<style>
+  header {
+    z-index: 100;
+  }
+  #Home {
+    z-index: -1;
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+import "../styles/tailwind.css";
+const { title = " texto por defecto" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot name="cabecera" />
+    <main>
+      <slot />
+    </main>
+  </body>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Passions+Conflict&display=swap");
+    :root {
+      --var-color-primary: #0c988c;
+      --var-color-green400: #0bb2a4;
+      --var-color-green500: #078379;
+      --var-color-green600: #034943;
+      --var-color-green700: #063733;
+      --var-color-green100: #a9eee8;
+      --var-color-green200: #c0fffa;
+      --var-color-green300: #cef4ed;
+      --var-color-green000: #e2f6f2;
+      --var-color-secondary: #663333;
+      --var-color-secondary100: #391d1d;
+      --var-color-acent: #7e501d;
+      --var-color-grey000: #ebebe2;
+      --var-color-grey100: #bfbfbf;
+      --var-color-grey200: #8c8c8c;
+      --var-color-grey300: #464646;
+      --var-color-black: #000;
+      --var-color-white: #fff;
+      --var-font-type: "Noto Sans";
+      --var-font-title: "Corinthia", serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--var-font-type);
+      scroll-behavior: smooth;
+    }
+  </style>
+</html>

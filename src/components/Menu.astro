@@ -1,0 +1,33 @@
+---
+interface links {
+  type: Array<String>;
+}
+import Link from "./Link.astro";
+const { links } = Astro.props;
+---
+
+<nav id="menu">
+  <ul>
+    {links.map((link: string) => <Link enlace={link} />)}
+  </ul>
+</nav>
+<style>
+  #menu {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 55px;
+    background-color: var(--var-color-white);
+  }
+  #menu ul {
+    position: absolute;
+    z-index: 100;
+    background-color: var(--var-color-white);
+    height: 40px;
+    margin-top: 15px;
+    right: 0;
+    display: flex;
+    transition: 0.5s ease-in all;
+    border-bottom: 1px solid var(--var-color-white);
+  }
+</style>

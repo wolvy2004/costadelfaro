@@ -1,0 +1,183 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<main id="Contacto">
+  <section class="wrapper">
+    <h1>Contacto</h1>
+    <div class="contacto-content">
+      <aside class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5181323041666!2d-62.83963082311223!3d-41.0576656263064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95f680059706e88b%3A0x115853ed82704d44!2sCosta%20del%20Faro%20Apart%20Hotel!5e0!3m2!1ses-419!2sar!4v1708641586888!5m2!1ses-419!2sar"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </aside>
+      <form action="post " class="form-contact">
+        <div class="input-container">
+          <input type="text" id="name" required />
+          <label for="name">Nombre y Apellido</label>
+          <Icon
+            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
+            name="mdi:user"
+          />
+        </div>
+        <div class="input-container">
+          <input type="email" id="email" required />
+          <label for="email">email</label>
+          <Icon
+            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
+            name="mdi:email"
+          />
+        </div>
+        <div class="input-container">
+          <input type="text" id="asunto" required />
+          <label for="subjet">asunto</label>
+          <Icon
+            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
+            name="mdi:text-subject"
+          />
+        </div>
+        <div class="input-container">
+          <textarea name="consulta" id="consulta" cols="30" rows="5"></textarea>
+          <label for="consulta">Consulta</label>
+          <Icon
+            class="absolute top-1 left-0 m-2 scale-150 text-teal-700"
+            name="mdi:pencil"
+          />
+        </div>
+        <div class="botonera">
+          <button class="submit-message">borrar campos</button>
+          <button class="submit-message">enviar consulta</button>
+        </div>
+        <p class="text-direccion">
+          <i class="absolute top-0 left-0 m-2 fa-location-dot"></i>
+          <span>J. MASSINI 1465 El Condór Pcia. de Río Negro</span>
+          <i class="absolute top-0 left-0 m-2 fa-mobile"></i><span
+            >02920 15445938
+          </span>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<style scoped>
+  main {
+    width: 100%;
+    height: 100vh;
+  }
+
+  #contacto {
+    width: 100%;
+    background-color: var(--var-color-white);
+    height: 100vh;
+    padding-top: 7em;
+  }
+  .wrapper {
+    background-color: var(--var-color-green000);
+    padding: 3em;
+    width: 75%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      text-align: center;
+      font-family: var(--var-font-title);
+      font-size: 4em;
+      color: var(--var-color-green200);
+      margin-bottom: 0px;
+    }
+  }
+  .contacto-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  #contacto .map {
+    margin: 10px;
+  }
+  .form-contact {
+    width: 100%;
+  }
+  .input-container {
+    position: relative;
+    margin: 30px 10px;
+    width: 90%;
+  }
+  input:focus {
+    outline: none;
+  }
+  input,
+  textarea {
+    background-color: var(--var-color-white);
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    padding-left: 50px;
+    color: var(--var-color-grey200);
+  }
+  .input-container label {
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    color: var(--var-color-green500);
+    transition: 0.5s ease;
+  }
+  input:valid ~ label,
+  input:focus ~ label,
+  textarea:focus ~ label,
+  textarea:valid ~ label {
+    top: -27px;
+    left: 0;
+    color: var(--var-color-green500);
+    font-size: 0.9em;
+  }
+  input:valid ~ .absolute top-0 left-0 m-2,
+  textarea:focus ~ .absolute top-0 left-0 m-2,
+  input:focus ~ .absolute top-0 left-0 m-2 {
+    color: var(--var-color-green200);
+    border-color: var(--var-color-green200);
+  }
+  .botonera {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+  }
+  .submit-message {
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--var-color-white);
+    padding: 15px 15px;
+    transition: 0.5s ease-in-out;
+    &:nth-child(even) {
+      background-color: var(--var-color-secondary);
+      &:hover {
+        background-color: var(--var-color-secondary100);
+      }
+    }
+    &:nth-child(odd) {
+      background-color: var(--var-color-primary);
+      &:hover {
+        background-color: var(--var-color-green000);
+      }
+    }
+  }
+  .text-direccion {
+    border-top: 1px solid var(--var-color-green100);
+    padding-top: 1.5em;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--var-color-grey200);
+  }
+</style>

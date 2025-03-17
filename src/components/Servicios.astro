@@ -1,0 +1,197 @@
+---
+import IconCar from "./icons/IconCar.astro";
+import IconClean from "./icons/IconClean.astro";
+import IconConectividad from "./icons/IconConectividad.astro";
+import IconDesayuno from "./icons/IconDesayuno.astro";
+---
+
+<main id="Servicios">
+  <article class="container">
+    <section id="servicios">
+      <picture class="img_lateral_izquierda">
+        <img src="imgs/img_aparts (121).jpg" alt="" />
+      </picture>
+      <section id="content_servicios">
+        <h1>Servicios y Caracteristicas</h1>
+        <ul class="lista-servicios">
+          <li>
+            <IconConectividad className="primary" />
+
+            <section class="detalle">
+              <p>
+                Conectividad inalámbrica sin límites con nuestro servicio de
+                WiFi libre. Conéctate fácilmente y navega de forma gratuita en
+                nuestros aparts.
+              </p>
+            </section>
+          </li>
+          <li>
+            <IconClean className="primary" />
+            <section class="detalle">
+              <p>
+                Ofrecemos servicio de limpieza en el apartamento para una
+                estancia siempre reluciente y cómoda.
+              </p>
+            </section>
+          </li>
+          <li>
+            <IconDesayuno className="primary" />
+            <section class="detalle">
+              <p>
+                Desayuno seco en la habitación: sobres de infusiones, tostadas
+                de paquete, manteca y mermelada.
+              </p>
+            </section>
+          </li>
+          <li>
+            <IconCar className="primary" />
+            <section class="detalle">
+              <p>
+                Estacionamiento semicubierto en la parte interna del Apart, que
+                no da a la calle, o en la puerta de la unidad en algunas
+                unidades vista al mar.
+              </p>
+            </section>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <section id="caracteristicas">
+      <picture class="img_lateral_derecha">
+        <img src="imgs/img_aparts (115).jpg" alt="" /></picture
+      >
+
+      <section>
+        <h3>
+          Nuestros exquisitos Aparts ofrecen una experiencia de lujo con
+          detalles cuidadosamente seleccionados que incluyen:
+        </h3>
+        <ul>
+          <li>Sommiers de alta calidad</li>
+          <li>Vajilla elegante</li>
+          <li>Ropa blanca</li>
+          <li>Aire acondicionado</li>
+          <li>television satelital con un tv led de 32"</li>
+          <li>Kitchenette equipada con anafe</li>
+          <li>Microondas y frigobar</li>
+          <li>Caja de seguridad</li>
+          <li>secador de pelo</li>
+        </ul>
+      </section>
+    </section>
+  </article>
+</main>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+  }
+  main {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #0c988c;
+    background: -webkit-linear-gradient(0deg, #0c988c 0%, #a9eee8 100%);
+    background: linear-gradient(0deg, #0c988c 0%, #a9eee8 100%);
+  }
+  .container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .detalle {
+    width: 600px;
+    font-size: 0.8em;
+    color: var(--var-color-grey300);
+    padding: 0.5em;
+  }
+  #servicios {
+    background-color: var(--var-color-green800);
+    height: 53%;
+    display: flex;
+  }
+  .img_lateral_izquierda {
+    width: 15%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    ul {
+    }
+  }
+
+  #content_servicios {
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+    padding-left: 2em;
+    h1 {
+      font-family: var(--var-font-title);
+      color: var(--var-color-green100);
+      font-size: 3rem;
+      margin-top: 0.5em;
+      font-weight: 400;
+    }
+  }
+
+  #caracteristicas {
+    background-color: var(--var-color-white);
+    height: 37%;
+    display: flex;
+    flex-direction: row-reverse;
+    h3 {
+      font-family: var(--var-font-type);
+      color: var(--var-color-grey300);
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1rem;
+      padding: 1.5em;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 4em;
+      width: 80%;
+      columns: 2 50px;
+    }
+
+    li {
+      font-family: var(--var-font-type);
+      color: var(--var-color-grey300);
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+  }
+  .img_lateral_derecha img {
+    right: 0;
+    width: 80%;
+    object-fit: cover;
+    height: 100%;
+    float: right;
+  }
+  .lista-servicios {
+    width: 600px;
+    margin-top: 0px;
+    margin-bottom: 0.5em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    p {
+    }
+    li {
+      list-style: none;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      padding: 1em 0.5em;
+    }
+  }
+</style>

@@ -1,0 +1,474 @@
+---
+import IconMaleta from "./icons/IconMaleta.astro";
+import IconCalendar from "./icons/IconCalendar.astro";
+import IconSend from "./icons/IconSend.astro";
+import IconUser from "./icons/IconUser.astro";
+import { Icon } from "astro-icon/components";
+const rango = (inicio: number, final: number, pasos: number) => {
+  let arr = [];
+  for (let i = inicio; i <= final; i += pasos) {
+    arr.push(i);
+  }
+  return arr;
+};
+
+let cant_adultos: Array<number> = rango(1, 20, 1);
+let cant_menores = rango(1, 5, 1);
+---
+
+<script>
+  const mesesAbreviados: Object = {
+    "01": "Ene",
+    "02": "Feb",
+    "03": "Mar",
+    "04": "Abr",
+    "05": "May",
+    "06": "Jun",
+    "07": "Jul",
+    "08": "Ago",
+    "09": "Sep",
+    "10": "Oct",
+    "11": "Nov",
+    "12": "Dic",
+  };
+
+  import flatpickr from "flatpickr";
+  import { Spanish } from "flatpickr/dist/l10n/es.js";
+
+  const date_in = document.getElementById("SelectDateIn");
+  const check_in = document.getElementById("date-check-in");
+  const cerrar_modal = document.getElementById("cerrar-modal");
+  const check = document.getElementById("check-in");
+
+  import "flatpickr/dist/themes/dark.css";
+
+  const fecha = flatpickr("#check-in", {
+    minDate: "today",
+    defaultDate: "today",
+    mode: "range",
+    locale: Spanish,
+    altInput: true,
+    altFormat: " j M Y",
+    dateFormat: "Y-m-d",
+  });
+  function mostrarFecha() {
+    console.log(fecha);
+  }
+  if (date_in) {
+    date_in.addEventListener("click", () => {
+      check_in?.classList.toggle("visible");
+      console.log(fecha);
+    });
+  }
+  if (check) {
+    check.addEventListener("change", () => {
+      let fecha_reserva = check.value;
+      let fecha_reserva_array = fecha_reserva.split(" ");
+      let datos_in = document.getElementById("datos-check-in");
+
+      fecha_reserva_array.splice(1, 0);
+      console.log(fecha_reserva_array.length);
+      if (fecha_reserva_array.length > 2) {
+        let fecha_desde = fecha_reserva_array[0].split("-");
+        let fecha_hasta = fecha_reserva_array[2].split("-");
+        let text = `<p>${fecha_desde[2]} ${mesesAbreviados[fecha_desde[1]]}  ${fecha_desde[0]} <span>hasta</span> ${fecha_hasta[2]} ${mesesAbreviados[fecha_hasta[1]]}  ${fecha_hasta[0]}</p>`;
+        if (datos_in) {
+          datos_in.innerHTML = text;
+          check.className = "invisible";
+        }
+      }
+    });
+  }
+  if (cerrar_modal) {
+    cerrar_modal.addEventListener("click", () => {
+      check_in?.classList.toggle("visible");
+    });
+  }
+</script>
+
+<article>
+  <div class="reservas_box">
+    <div class="title-reservas">
+      <IconMaleta class="icon" />
+      <div class="text_reservas">
+        <h1>Check In</h1>
+        <p>consultar disponibilidad</p>
+      </div>
+    </div>
+    <div class="select-pax">
+      <IconUser />
+      <p>Cantidad de huespedes?</p>
+
+      <div id="adultos">
+        <label for="adultos">adultos</label>
+        <Icon class="icon" name="mdi:users" />
+      </div>
+
+      <select class="input" id="cant_mayores">
+        <option value="00">00</option>
+
+        {
+          cant_adultos.map((e) => (
+            <option value={e}>{e < 10 ? `0${e}` : e}</option>
+          ))
+        }
+      </select>
+      <div id="menores">
+        <label for="adultos">menores</label>
+        <Icon class="icon" name="mdi:users" />
+      </div>
+
+      <select class="input" id="cant_menores">
+        <option value="00">00</option>
+        {
+          cant_menores.map((e) => (
+            <option value={e}>{e < 10 ? `0${e}` : e}</option>
+          ))
+        }
+      </select>
+    </div>
+    <div class="select_days_reservas">
+      <IconCalendar />
+
+      <div id="SelectDateIn">
+        <label for="SelectDateIn">Desde</label>
+        <div id="check-in-flatpickr">
+          <input type="text" class="check-in" id="check-in" readonly />
+        </div>
+
+        <div class="fecha" id="datos-check-in">
+          <h3>seleccionar fecha</h3>
+        </div>
+      </div>
+      <div class="SelectDateOut"></div>
+    </div>
+
+    <button class="submit-reservas">
+      <IconSend />
+      <p>consultar</p>
+    </button>
+  </div>
+</article>
+<style is:inline>
+  a {
+    text-decoration: none;
+    color: var(--var-color-green200);
+    border: 2px solid var(--var-color-green200);
+    padding: 0.25em 0.75em;
+    border-radius: 3px;
+    transition: 0.5s ease-out;
+  }
+  a:hover {
+    background-color: var(--var-color-green200);
+    color: var(--var-color-white);
+  }
+  article {
+    width: 100%;
+    height: 100vh;
+  }
+  .reservas_box {
+    display: flex;
+    padding: 3em;
+    align-items: center;
+    position: absolute;
+    width: 53%;
+    left: 50%;
+    transform: translatex(-50%);
+    height: 75px;
+    background-color: var(--var-color-white);
+    box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.5);
+    bottom: 75px;
+    z-index: 1;
+    border-radius: 5px;
+
+    svg {
+      margin-right: 1em;
+      width: 40px;
+      fill: var(--var-color-green100);
+    }
+  }
+  .title-reservas {
+    display: flex;
+    border-right: 3px solid var(--var-color-green100);
+    padding-right: 1.5em;
+  }
+  #btn_modal {
+    display: none;
+  }
+  .text_reservas {
+    h1 {
+      color: var(--var-color-grey300);
+      text-align: center;
+      font-size: 1.5em;
+      line-height: 0.4em;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: var(--var-color-grey300);
+      text-align: center;
+      font-size: 0.6em;
+      font-optical-sizing: 1em;
+    }
+  }
+
+  .select-pax {
+    display: flex;
+    color: var(--var-color-grey300);
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid var(--var-color-green100);
+    padding: 0 1em;
+    font-weight: 600;
+    flex-basis: 300px;
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--var-color-green100);
+    }
+  }
+  .select_days_reservas {
+    display: flex;
+    align-items: center;
+    color: var(--var-color-grey300);
+    font-size: 0.8em;
+    font-weight: 600;
+    svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 1em;
+      fill: var(--var-color-green100);
+    }
+  }
+
+  #SelectDateIn,
+  .SelectDateOut {
+    position: relative;
+    display: flex;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--var-color-grey300);
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0.5em;
+    padding: 0.5em;
+    :hover {
+      cursor: pointer;
+    }
+    span {
+      border-radius: 5px;
+
+      background-color: var(--var-color-grey200);
+      padding: 0.5em 1em;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      text-transform: uppercase;
+      color: var(--var-color-white);
+    }
+  }
+
+  .fecha {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-left: 1em;
+    h1 {
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 0em;
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 0em;
+    }
+  }
+
+  .submit-reservas {
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    right: -100px;
+    width: 200px;
+    height: 40px;
+    background-color: var(--var-color-secondary);
+    color: var(--var-color-white);
+    border: none;
+    text-transform: uppercase;
+    transition: 0.5s ease-out;
+    padding: 0 1em;
+    svg {
+      position: absolute;
+      top: -50px;
+      opacity: 0;
+      left: 15px;
+      margin-left: 0.5em;
+      width: 30px;
+      height: 30px;
+      transition: 0.5s ease-out;
+      fill: var(--var-color-white);
+    }
+    p {
+      position: relative;
+      left: 15px;
+      border-left: 2px solid var(--var-color-white);
+      padding-left: 0.5em;
+      font-size: 1.2em;
+      letter-spacing: 3px;
+    }
+
+    &:hover {
+      background-color: var(--var-color-acent);
+      box-shadow: 0px 0px 20px var(--var-color-grey300);
+      font-size: 0.7em;
+      scale: 1.06;
+    }
+    &:hover > svg {
+      scale: 0.7;
+      top: 6px;
+      opacity: 1;
+    }
+    &:active {
+      background-color: var(--var-color-grey100);
+    }
+  }
+  .modal-container {
+    backdrop-filter: blur(5px);
+    background-color: rgba(1, 1, 1, 0.5);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease all;
+  }
+  .visible {
+    z-index: 50;
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal-container:target {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 325px;
+    height: 175px;
+    background-color: var(--var-color-white);
+    bottom: 150px;
+    left: 800px;
+    transition: all 0.5s;
+    border-radius: 7px;
+    box-shadow: 5px 05px 50px 0px rgba(0, 0, 0, 0.2);
+
+    div {
+      width: 80%;
+      display: flex;
+      padding: 0.5em;
+      justify-content: center;
+      align-items: center;
+    }
+    div:nth-child(1) {
+      border-bottom: 2px solid var(--var-color-grey000);
+    }
+    .titulo_label {
+      text-transform: uppercase;
+      width: 100px;
+      background-color: transparent;
+      color: var(--var-color-green100);
+    }
+
+    .buttons_select_pax {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    svg:hover {
+      background-color: red;
+    }
+    .save_pax {
+      font-family: var(--var-font-type);
+      font-size: 0.8em;
+      letter-spacing: 2px;
+      padding: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      width: 125px;
+      border-radius: 4px;
+      background-color: var(--var-color-green200);
+      text-align: center;
+      color: var(--var-color-white);
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background-color: var(--var-color-green300);
+      }
+    }
+  }
+  #check-in-flatpickr {
+    z-index: 5;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50px;
+    width: 300px;
+    height: 35px;
+    opacity: 0;
+  }
+  #check-in-flatpickr:hover h3 {
+    background-color: var(--var-color-green100);
+  } /* Hace el input invisible */
+  h3 {
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--var-color-green200);
+  }
+
+  .input {
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--var-color-grey100);
+    width: 75px;
+    height: 50px;
+    padding: 0.5em;
+    font-size: 1em;
+    margin: 0.5em 1em;
+  }
+  #adultos,
+  #menores {
+    color: var(--var-color-grey200);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+  }
+  .icon {
+    margin: 0;
+    color: var(--var-color-green200);
+  }
+  @media (max-width: 1920px) {
+    .reservas_box {
+      width: 65%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+</style>
