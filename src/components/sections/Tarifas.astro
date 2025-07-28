@@ -217,10 +217,12 @@ import { Icon } from "astro-icon/components";
           <td class="precio">$ <span class="price-value">47000</span></td></tr
         >
       </table>
-      <p class="leyenda-vigencia">
-        Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
-      </p>
-      <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
+      <div class="leyenda">
+        <p>
+          Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
+        </p>
+        <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
+      </div>
     </div>
   </article>
 </section>
@@ -343,5 +345,12 @@ import { Icon } from "astro-icon/components";
 
   .precio span {
     font-size: 1.2rem;
+  }
+  .leyenda {
+    margin-top: 25px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

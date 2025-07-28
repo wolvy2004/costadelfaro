@@ -12,84 +12,67 @@ import { Icon } from "astro-icon/components";
   });
 </script>
 <section id="Contacto">
-  <div class="wrapper">
-    <h1>Contacto</h1>
-    <div class="contacto-content">
-      <aside class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5181323041666!2d-62.83963082311223!3d-41.0576656263064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95f680059706e88b%3A0x115853ed82704d44!2sCosta%20del%20Faro%20Apart%20Hotel!5e0!3m2!1ses-419!2sar!4v1708641586888!5m2!1ses-419!2sar"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </aside>
-      <form action="post " class="form-contact" id="form-contact">
-        <div class="input-container">
-          <input type="text" id="name" required />
-          <label for="name">Nombre y Apellido</label>
-          <Icon name="mdi:user" width="30px" height="30px" class="icon" />
-        </div>
-        <div class="input-container">
-          <input type="email" id="email" required />
-          <label for="email">email</label>
-          <Icon
-            <Icon
-            width="30px"
-            height="30px"
-            name="mdi:email"
-            class="icon"
-          />
-        </div>
-        <div class="input-container">
-          <input type="text" id="asunto" required />
-          <label for="subjet">asunto</label>
-          <Icon
-            name="mdi:text-subject"
-            width="30px"
-            height="30px"
-            class="icon"
-          />
-        </div>
-        <div class="input-container">
-          <textarea name="consulta" id="consulta" cols="30" rows="5"></textarea>
-          <label for="consulta">Consulta</label>
-          <Icon width="30px" height="30px" name="mdi:pencil" class="icon" />
-        </div>
-        <div class="botonera">
-          <button class="submit-message" id="btn-delete-fields">
-            <Icon width="30px" height="30px" name="mdi:trash" />borrar campos</button
-          >
-          <button class="submit-message">
-            <Icon width="30px" height="30px" name="mdi:send" /> enviar consulta</button
-          >
-        </div>
-        <p class="text-direccion">
-          <Icon width="30px" height="30px" name="mdi:location" />
-          <span>J. MASSINI 1465 El Condór Pcia. de Río Negro</span>
-          <Icon width="30px" height="30px" name="mdi:phone" />
-          02920 15445938
-        </p>
-      </form>
-    </div>
+  <h1>Contacto</h1>
+  <div class="contacto-content">
+    <aside class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5181323041666!2d-62.83963082311223!3d-41.0576656263064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95f680059706e88b%3A0x115853ed82704d44!2sCosta%20del%20Faro%20Apart%20Hotel!5e0!3m2!1ses-419!2sar!4v1708641586888!5m2!1ses-419!2sar"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </aside>
+    <form action="post " class="form-contact" id="form-contact">
+      <div class="input-container">
+        <input type="text" id="name" required />
+        <label for="name">Nombre y Apellido</label>
+        <Icon name="mdi:user" width="30px" height="30px" class="icon" />
+      </div>
+      <div class="input-container">
+        <input type="email" id="email" required />
+        <label for="email">email</label>
+        <Icon <Icon width="30px" height="30px" name="mdi:email" class="icon" />
+      </div>
+      <div class="input-container">
+        <input type="text" id="asunto" required />
+        <label for="subjet">asunto</label>
+        <Icon name="mdi:text-subject" width="30px" height="30px" class="icon" />
+      </div>
+      <div class="input-container">
+        <textarea name="consulta" id="consulta" cols="30" rows="5"></textarea>
+        <label for="consulta">Consulta</label>
+        <Icon width="30px" height="30px" name="mdi:pencil" class="icon" />
+      </div>
+      <div class="botonera">
+        <button class="submit-message" id="btn-delete-fields">
+          <Icon width="30px" height="30px" name="mdi:trash" />borrar campos</button
+        >
+        <button class="submit-message">
+          <Icon width="30px" height="30px" name="mdi:send" /> enviar consulta</button
+        >
+      </div>
+      <p class="text-direccion">
+        <Icon width="30px" height="30px" name="mdi:location" />
+        <span>J. MASSINI 1465 El Condór Pcia. de Río Negro</span>
+        <Icon width="30px" height="30px" name="mdi:phone" />
+        02920 15445938
+      </p>
+    </form>
   </div>
 </section>
 
-<style is:inline>
-  section {
-    width: 100%;
-    height: 100vh;
-  }
-
-  #contacto {
-    width: 100%;
+<style>
+  #Contacto {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
     background-color: var(--var-color-white);
     height: 100vh;
-    padding-top: 7em;
-  }
-  .wrapper {
-    padding-top: 200px;
+    margin: 0 auto;
     h1 {
       text-align: center;
       font-family: var(--var-font-title);
@@ -98,6 +81,7 @@ import { Icon } from "astro-icon/components";
       margin-bottom: 0px;
     }
   }
+
   .contacto-content {
     padding: 2rem;
     margin: 0 auto;

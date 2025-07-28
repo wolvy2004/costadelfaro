@@ -108,9 +108,8 @@ import { Icon } from "astro-icon/components";
   .container {
     background: transparent;
     margin: 0 auto;
-    width: 90%;
-    height: 100vh;
-    padding-top: 140px;
+    width: 70%;
+    padding-top: 240px;
   }
 
   .img_lateral_derecha {
@@ -146,15 +145,15 @@ import { Icon } from "astro-icon/components";
   }
   #content_servicios {
     background-color: var(--var-color-green000);
-    max-height: 50%;
+    height: 50%;
   }
   #content_servicios ul li {
     align-items: center;
     padding: 1rem;
     display: grid;
-    margin: 0px 30px;
-    gap: 20px;
-    grid-template-columns: 100px 1fr;
+    margin: 0px 20px;
+    gap: 10px;
+    grid-template-columns: 90px 1fr;
     justify-content: center;
     font-size: 1rem;
   }
@@ -162,6 +161,7 @@ import { Icon } from "astro-icon/components";
     font-family: var(--var-font-title);
     color: var(--var-color-green500);
     border: none;
+    margin-left: 2rem;
     font-size: 6rem;
   }
   #caracteristicas {
@@ -179,14 +179,19 @@ import { Icon } from "astro-icon/components";
         background-color: var(--var-color-green000);
         padding: 0.25rem 1rem;
         margin: 0.5rem 1rem;
+        font-size: 1.2rem;
         text-transform: capitalize;
       }
     }
     h3 {
+      max-width: 1000px;
+      display: flexbox;
+      font-size: clamp(16px, 2vw, 24px);
       font-style: italic;
       border: none;
-      margin: 20px;
-      font-size: 1.1rem;
+      margin: 40px 100px;
+      font-size: 1.4rem;
+      color: var(--var-color-grey200);
     }
   }
   .icon {
