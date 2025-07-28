@@ -2,8 +2,17 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<main id="Contacto">
-  <section class="wrapper">
+<script>
+  const borrarCamposBoton = document.getElementById("btn-delete-fields");
+  let formulario = document.getElementById("form-contact") as HTMLFormElement;
+
+  borrarCamposBoton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    formulario?.reset();
+  });
+</script>
+<section id="Contacto">
+  <div class="wrapper">
     <h1>Contacto</h1>
     <div class="contacto-content">
       <aside class="map">
@@ -16,57 +25,59 @@ import { Icon } from "astro-icon/components";
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </aside>
-      <form action="post " class="form-contact">
+      <form action="post " class="form-contact" id="form-contact">
         <div class="input-container">
           <input type="text" id="name" required />
           <label for="name">Nombre y Apellido</label>
-          <Icon
-            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
-            name="mdi:user"
-          />
+          <Icon name="mdi:user" width="30px" height="30px" class="icon" />
         </div>
         <div class="input-container">
           <input type="email" id="email" required />
           <label for="email">email</label>
           <Icon
-            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
+            <Icon
+            width="30px"
+            height="30px"
             name="mdi:email"
+            class="icon"
           />
         </div>
         <div class="input-container">
           <input type="text" id="asunto" required />
           <label for="subjet">asunto</label>
           <Icon
-            class="absolute top-1 left-0 m-3 scale-150 text-teal-700"
             name="mdi:text-subject"
+            width="30px"
+            height="30px"
+            class="icon"
           />
         </div>
         <div class="input-container">
           <textarea name="consulta" id="consulta" cols="30" rows="5"></textarea>
           <label for="consulta">Consulta</label>
-          <Icon
-            class="absolute top-1 left-0 m-2 scale-150 text-teal-700"
-            name="mdi:pencil"
-          />
+          <Icon width="30px" height="30px" name="mdi:pencil" class="icon" />
         </div>
         <div class="botonera">
-          <button class="submit-message">borrar campos</button>
-          <button class="submit-message">enviar consulta</button>
+          <button class="submit-message" id="btn-delete-fields">
+            <Icon width="30px" height="30px" name="mdi:trash" />borrar campos</button
+          >
+          <button class="submit-message">
+            <Icon width="30px" height="30px" name="mdi:send" /> enviar consulta</button
+          >
         </div>
         <p class="text-direccion">
-          <i class="absolute top-0 left-0 m-2 fa-location-dot"></i>
+          <Icon width="30px" height="30px" name="mdi:location" />
           <span>J. MASSINI 1465 El Condór Pcia. de Río Negro</span>
-          <i class="absolute top-0 left-0 m-2 fa-mobile"></i><span
-            >02920 15445938
-          </span>
+          <Icon width="30px" height="30px" name="mdi:phone" />
+          02920 15445938
         </p>
       </form>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<style scoped>
-  main {
+<style is:inline>
+  section {
     width: 100%;
     height: 100vh;
   }
@@ -78,24 +89,25 @@ import { Icon } from "astro-icon/components";
     padding-top: 7em;
   }
   .wrapper {
-    background-color: var(--var-color-green000);
-    padding: 3em;
-    width: 75%;
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
+    padding-top: 200px;
     h1 {
       text-align: center;
       font-family: var(--var-font-title);
       font-size: 4em;
-      color: var(--var-color-green200);
+      color: var(--var-color-green700);
       margin-bottom: 0px;
     }
   }
   .contacto-content {
+    padding: 2rem;
+    margin: 0 auto;
+    width: 70%;
+    background-color: var(--var-color-green100);
     display: grid;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
     grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
   }
 
   #contacto .map {
@@ -144,6 +156,12 @@ import { Icon } from "astro-icon/components";
     color: var(--var-color-green200);
     border-color: var(--var-color-green200);
   }
+  .icon {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    color: var(--var-color-green400);
+  }
   .botonera {
     display: flex;
     align-items: center;
@@ -151,6 +169,10 @@ import { Icon } from "astro-icon/components";
     gap: 20px;
   }
   .submit-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     border-radius: 5px;
     border: none;
     width: 250px;
@@ -167,17 +189,20 @@ import { Icon } from "astro-icon/components";
       }
     }
     &:nth-child(odd) {
-      background-color: var(--var-color-primary);
+      background-color: var(--var-color-green500);
       &:hover {
-        background-color: var(--var-color-green000);
+        background-color: var(--var-color-green700);
       }
     }
   }
   .text-direccion {
+    margin-top: 1rem;
+    display: flex;
+    gap: 3px;
     border-top: 1px solid var(--var-color-green100);
     padding-top: 1.5em;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: var(--var-color-grey200);
   }
 </style>

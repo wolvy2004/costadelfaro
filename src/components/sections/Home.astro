@@ -1,8 +1,9 @@
 ---
-import ReservasBox from "./ReservasBox.astro";
+import type { literal } from "astro:schema";
+import ReservasBox from "../vue/ReservasBox.vue";
 ---
 
-<main id="Home">
+<section id="Home">
   <h1 class="title">Un Paraiso Frente al mar</h1>
   <p class="leyend">
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus alias
@@ -12,38 +13,38 @@ import ReservasBox from "./ReservasBox.astro";
   <div class="bg_gradiente"></div>
 
   <!-- ventana modal-->
-  <ReservasBox client:load />
+  <ReservasBox client:only />
 
   <div class="white_space"></div>
-</main>
+</section>
 <style>
-  main {
-  }
-
   .title {
+    z-index: 51;
     font-family: var(--var-font-title);
-    font-size: 4.5em;
-    font-weight: 100;
+    font-size: 7em;
+    font-weight: 500;
     color: var(--var-color-white);
     position: absolute;
-    bottom: 220px;
+    bottom: 280px;
     text-align: center;
     width: 100%;
   }
   #Home {
-    background-image: url("../assets/bg_home.jpg");
     width: 100%;
     height: 100vh;
+    background-image: url("../../assets/bg_home.jpg");
     background-size: cover;
-    background-position: 0px -150px;
+    background-position: center;
     background-repeat: no-repeat;
 
     .leyend {
+      z-index: 50;
       position: absolute;
       bottom: 205px;
-      width: 50%;
+      width: 70%;
       text-align: center;
       left: 50%;
+      font-size: 1.5rem;
       transform: translateX(-50%);
       color: var(--var-color-white);
     }
@@ -55,8 +56,8 @@ import ReservasBox from "./ReservasBox.astro";
     width: 100%;
     background: linear-gradient(
       0deg,
-      var(--var-color-green400),
-      1%,
+      var(--var-color-green700),
+      15%,
       transparent
     );
     height: 90vh;

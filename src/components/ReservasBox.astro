@@ -1,6 +1,5 @@
 ---
-import IconMaleta from "./icons/IconMaleta.astro";
-import IconCalendar from "./icons/IconCalendar.astro";
+import IconCalendar from "./icons/IconCalendar.vue";
 import IconSend from "./icons/IconSend.astro";
 import IconUser from "./icons/IconUser.astro";
 import { Icon } from "astro-icon/components";
@@ -17,7 +16,7 @@ let cant_menores = rango(1, 5, 1);
 ---
 
 <script>
-  const mesesAbreviados: Object = {
+  const mesesAbreviados = {
     "01": "Ene",
     "02": "Feb",
     "03": "Mar",
@@ -65,16 +64,27 @@ let cant_menores = rango(1, 5, 1);
       let fecha_reserva = check.value;
       let fecha_reserva_array = fecha_reserva.split(" ");
       let datos_in = document.getElementById("datos-check-in");
+      let desde = document.getElementById("desde");
+      let hasta = document.getElementById("hasta");
+      let separador = document.getElementById("separador");
 
       fecha_reserva_array.splice(1, 0);
       console.log(fecha_reserva_array.length);
       if (fecha_reserva_array.length > 2) {
         let fecha_desde = fecha_reserva_array[0].split("-");
         let fecha_hasta = fecha_reserva_array[2].split("-");
-        let text = `<p>${fecha_desde[2]} ${mesesAbreviados[fecha_desde[1]]}  ${fecha_desde[0]} <span>hasta</span> ${fecha_hasta[2]} ${mesesAbreviados[fecha_hasta[1]]}  ${fecha_hasta[0]}</p>`;
+        let text_desde = `<p class="dia_mes">${fecha_desde[2]} ${mesesAbreviados[fecha_desde[1]]}</p><p class="anio">  ${fecha_desde[0]}</p> `;
+
+        let text_hasta = ` <p class="dia_mes">${fecha_hasta[2]} ${mesesAbreviados[fecha_hasta[1]]}</p><p class="anio"> ${fecha_hasta[0]}</p>`;
         if (datos_in) {
-          datos_in.innerHTML = text;
-          check.className = "invisible";
+          if (desde && hasta) {
+            desde.innerHTML = text_desde;
+            if (separador?.className === "separador") {
+              separador?.classList.toggle("visible");
+            }
+            hasta.innerHTML = text_hasta;
+            datos_in.className = "invisible";
+          }
         }
       }
     });
@@ -89,12 +99,13 @@ let cant_menores = rango(1, 5, 1);
 <article>
   <div class="reservas_box">
     <div class="title-reservas">
-      <IconMaleta class="icon" />
+      <Icon class="icon" name="mdi:bag-suitcase-outline" />
       <div class="text_reservas">
-        <h1>Check In</h1>
+        <h1 class="font-bold">Check In</h1>
         <p>consultar disponibilidad</p>
       </div>
     </div>
+
     <div class="select-pax">
       <IconUser />
       <p>Cantidad de huespedes?</p>
@@ -136,8 +147,12 @@ let cant_menores = rango(1, 5, 1);
           <input type="text" class="check-in" id="check-in" readonly />
         </div>
 
-        <div class="fecha" id="datos-check-in">
-          <h3>seleccionar fecha</h3>
+        <div class="fecha">
+          <div class="desde" id="desde"></div>
+          <span class="separador" id="separador">hasta</span>
+          <div class="hasta" id="hasta"></div>
+
+          <h3 id="datos-check-in">seleccionar fecha</h3>
         </div>
       </div>
       <div class="SelectDateOut"></div>
@@ -152,7 +167,7 @@ let cant_menores = rango(1, 5, 1);
 <style is:inline>
   a {
     text-decoration: none;
-    color: var(--var-color-green200);
+    color: var(--var-color-green400);
     border: 2px solid var(--var-color-green200);
     padding: 0.25em 0.75em;
     border-radius: 3px;
@@ -187,8 +202,13 @@ let cant_menores = rango(1, 5, 1);
       fill: var(--var-color-green100);
     }
   }
+  .separador {
+    display: none;
+  }
   .title-reservas {
     display: flex;
+    align-items: center;
+    justify-content: center;
     border-right: 3px solid var(--var-color-green100);
     padding-right: 1.5em;
   }
@@ -199,16 +219,15 @@ let cant_menores = rango(1, 5, 1);
     h1 {
       color: var(--var-color-grey300);
       text-align: center;
-      font-size: 1.5em;
+      font-size: 1.2rem;
       line-height: 0.4em;
       text-transform: uppercase;
     }
-
     p {
+      margin-top: 0.5rem;
       color: var(--var-color-grey300);
       text-align: center;
-      font-size: 0.6em;
-      font-optical-sizing: 1em;
+      font-size: 0.7em;
     }
   }
 
@@ -218,14 +237,14 @@ let cant_menores = rango(1, 5, 1);
     font-size: 1em;
     justify-content: center;
     align-items: center;
-    border-right: 3px solid var(--var-color-green100);
+    border-right: 3px solid var(--var-color-green600);
     padding: 0 1em;
     font-weight: 600;
     flex-basis: 300px;
     svg {
       width: 40px;
       height: 40px;
-      fill: var(--var-color-green100);
+      fill: var(--var-color-green400);
     }
   }
   .select_days_reservas {
@@ -238,7 +257,7 @@ let cant_menores = rango(1, 5, 1);
       width: 40px;
       height: 40px;
       margin-left: 1em;
-      fill: var(--var-color-green100);
+      fill: var(--var-color-green400);
     }
   }
 
@@ -259,33 +278,34 @@ let cant_menores = rango(1, 5, 1);
     }
     span {
       border-radius: 5px;
-
       background-color: var(--var-color-grey200);
-      padding: 0.5em 1em;
+      padding: 0.5rem 0.5rem;
+      height: 40px;
       font-size: 1rem;
-      margin: 0 0.5rem;
+      margin: 0 0.2rem;
       text-transform: uppercase;
       color: var(--var-color-white);
     }
   }
 
   .fecha {
+    display: flex;
+    gap: 25px;
     position: relative;
-    width: 100%;
-    height: 100%;
     text-align: center;
-    margin-left: 1em;
-    h1 {
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 0em;
-    }
-    p {
-      font-size: 1.3em;
-      line-height: 0em;
-    }
+    width: 100%;
+    height: 50%;
+    margin-left: 0.5rem;
   }
-
+  .fecha .dia_mes {
+    font-size: 1rem;
+    height: 1rem;
+  }
+  .fecha .anio {
+    height: 2rem;
+    font-size: 2rem;
+    line-height: 2rem;
+  }
   .submit-reservas {
     overflow: hidden;
     position: absolute;
@@ -299,6 +319,7 @@ let cant_menores = rango(1, 5, 1);
     background-color: var(--var-color-secondary);
     color: var(--var-color-white);
     border: none;
+    border-radius: 5px;
     text-transform: uppercase;
     transition: 0.5s ease-out;
     padding: 0 1em;
@@ -318,7 +339,7 @@ let cant_menores = rango(1, 5, 1);
       left: 15px;
       border-left: 2px solid var(--var-color-white);
       padding-left: 0.5em;
-      font-size: 1.2em;
+      font-size: 1em;
       letter-spacing: 3px;
     }
 
@@ -350,11 +371,7 @@ let cant_menores = rango(1, 5, 1);
     visibility: hidden;
     transition: 0.5s ease all;
   }
-  .visible {
-    z-index: 50;
-    opacity: 1;
-    visibility: visible;
-  }
+
   .modal-container:target {
     opacity: 1;
     visibility: visible;
@@ -388,7 +405,7 @@ let cant_menores = rango(1, 5, 1);
       text-transform: uppercase;
       width: 100px;
       background-color: transparent;
-      color: var(--var-color-green100);
+      color: var(--var-color-green400);
     }
 
     .buttons_select_pax {
@@ -409,7 +426,7 @@ let cant_menores = rango(1, 5, 1);
       border: none;
       width: 125px;
       border-radius: 4px;
-      background-color: var(--var-color-green200);
+      background-color: var(--var-color-green400);
       text-align: center;
       color: var(--var-color-white);
       transition: 0.2s ease-in-out;
@@ -419,23 +436,28 @@ let cant_menores = rango(1, 5, 1);
     }
   }
   #check-in-flatpickr {
-    z-index: 5;
     background-color: red;
+    z-index: 5;
     display: flex;
     justify-content: center;
     position: absolute;
-    left: 50px;
-    width: 300px;
+    left: 75px;
+    top: 0;
+    width: 200px;
     height: 35px;
     opacity: 0;
+    .input {
+      width: 200px;
+    }
   }
+
   #check-in-flatpickr:hover h3 {
-    background-color: var(--var-color-green100);
+    background-color: var(--var-color-green400);
   } /* Hace el input invisible */
   h3 {
     border-radius: 5px;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--var-color-green200);
+    border: 2px solid var(--var-color-green400);
   }
 
   .input {
@@ -459,13 +481,18 @@ let cant_menores = rango(1, 5, 1);
     align-items: center;
     width: 70px;
   }
-  .icon {
-    margin: 0;
-    color: var(--var-color-green200);
+  .title-reservas .icon {
+    scale: 1.2;
+    height: 75px;
+    margin-right: 0.5rem;
+    color: var(--var-color-green400);
+  }
+  .visible {
+    display: block;
   }
   @media (max-width: 1920px) {
     .reservas_box {
-      width: 65%;
+      width: 80%;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);

@@ -1,0 +1,200 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section id="Servicios">
+  <article class="container">
+    <div id="content_servicios">
+      <picture class="img_lateral_derecha">
+        <img src="imgs/img_aparts (118).jpg" alt="" /></picture
+      >
+      <div class="detalle-left">
+        <h1>Servicios y Caracteristicas</h1>
+        <ul class="lista-servicios">
+          <li>
+            <Icon
+              class="icon"
+              name="material-symbols:wifi-rounded"
+              width="50px"
+              height="50px"
+            />
+
+            <p>
+              Conectividad inalámbrica sin límites con nuestro servicio de WiFi
+              libre. Conéctate fácilmente y navega de forma gratuita en nuestros
+              aparts.
+            </p>
+          </li>
+          <li>
+            <Icon
+              class="icon"
+              name="material-symbols:clean-hands-outline"
+              width="50px"
+              height="50px"
+            />
+            <p>
+              Ofrecemos servicio de limpieza en el apartamento para una estancia
+              siempre reluciente y cómoda.
+            </p>
+          </li>
+          <li>
+            <Icon
+              class="icon"
+              name="ic:outline-free-breakfast"
+              width="50px"
+              height="50px"
+            />
+
+            Desayuno seco en la habitación: sobres de infusiones, tostadas de
+            paquete, manteca y mermelada.
+          </li>
+          <li>
+            <Icon
+              class="icon"
+              name="material-symbols:parking-sign"
+              width="50px"
+              height="50px"
+            />
+            <p>
+              Estacionamiento semicubierto en la parte interna del Apart, que no
+              da a la calle, o en la puerta de la unidad en algunas unidades
+              vista al mar.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="caracteristicas">
+      <picture class="img_lateral_izquierda">
+        <img src="imgs/img_aparts (115).jpg" alt="" /></picture
+      >
+
+      <div class="detalle-right">
+        <h3>
+          Nuestros exquisitos Aparts ofrecen una experiencia de lujo con
+          detalles cuidadosamente seleccionados que incluyen:
+        </h3>
+        <ul>
+          <li>Sommiers de alta calidad</li>
+          <li>Vajilla elegante</li>
+          <li>Ropa blanca</li>
+          <li>Aire acondicionado</li>
+          <li>television satelital con un tv led de 32"</li>
+          <li>Kitchenette equipada con anafe</li>
+          <li>Microondas y frigobar</li>
+          <li>Caja de seguridad</li>
+          <li>secador de pelo</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</section>
+<style scoped>
+  #Servicios {
+    position: relative;
+    background: linear-gradient(
+      20deg,
+      var(--var-color-green500),
+      var(--var-color-green200)
+    );
+    padding: 2rem;
+  }
+  .detalle-left {
+    margin-left: 200px;
+  }
+  .detalle-right {
+  }
+  .container {
+    background: transparent;
+    margin: 0 auto;
+    width: 90%;
+    height: 100vh;
+    padding-top: 140px;
+  }
+
+  .img_lateral_derecha {
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 200px;
+      height: 100%;
+    }
+  }
+  .img_lateral_izquierda {
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      object-fit: cover;
+      width: 600px;
+      height: 100%;
+    }
+  }
+  #content_servicios,
+  #caracteristicas {
+    position: relative;
+
+    display: flex;
+  }
+  #content_servicios ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+  }
+  #content_servicios {
+    background-color: var(--var-color-green000);
+    max-height: 50%;
+  }
+  #content_servicios ul li {
+    align-items: center;
+    padding: 1rem;
+    display: grid;
+    margin: 0px 30px;
+    gap: 20px;
+    grid-template-columns: 100px 1fr;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  h1 {
+    font-family: var(--var-font-title);
+    color: var(--var-color-green500);
+    border: none;
+    font-size: 6rem;
+  }
+  #caracteristicas {
+    height: 40%;
+    max-height: fit-content;
+    background-color: var(--var-color-white);
+    ul {
+      list-style: square;
+      list-style-position: inside;
+      column-count: 3;
+      column-width: 25rem;
+      margin-left: 100px;
+      li {
+        width: 100%;
+        background-color: var(--var-color-green000);
+        padding: 0.25rem 1rem;
+        margin: 0.5rem 1rem;
+        text-transform: capitalize;
+      }
+    }
+    h3 {
+      font-style: italic;
+      border: none;
+      margin: 20px;
+      font-size: 1.1rem;
+    }
+  }
+  .icon {
+    position: relative;
+    border: 5px solid var(--var-color-green400);
+    padding: 1rem;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+  }
+</style>

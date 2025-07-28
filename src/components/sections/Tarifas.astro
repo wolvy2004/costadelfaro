@@ -1,0 +1,347 @@
+---
+import IconUser from "../icons/IconUser.astro";
+const finicio_vig = "01-01-2025";
+const ffinal_vig = "30-06-2025";
+
+import { Icon } from "astro-icon/components";
+---
+
+<section id="Tarifas">
+  <img class="bg_svg" src="src/assets/bg_tarifas.svg" />
+  <article class="container">
+    <aside class="img-lat-izq">
+      <picture>
+        <img src="imgs/img_aparts (22).JPG" alt="" />
+      </picture>
+    </aside>
+    <div class="tarifas-detalle">
+      <h1>Tarifas</h1>
+
+      <table>
+        <tr>
+          <td class="detalle"
+            ><span>Aparts 2 Personas</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+          </td>
+          <td class="precio">$ <span class="price-value">4700</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 3 Personas</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+          </td>
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 4 Personas ESTANDAR</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            /></td
+          >
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 4 Personas ADAPTADA</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+          </td>
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 4 Personas SUPERIOR</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+          </td>
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 4 Personas SUITE</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            /></td
+          >
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+        <tr
+          ><td class="detalle">
+            <span>Aparts 5 Personas</span>
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            />
+            <Icon
+              class="icon-user"
+              name="mdi:user"
+              width="40px"
+              height="40px"
+            /></td
+          >
+          <td class="precio">$ <span class="price-value">47000</span></td></tr
+        >
+      </table>
+      <p class="leyenda-vigencia">
+        Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
+      </p>
+      <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
+    </div>
+  </article>
+</section>
+<style>
+  #Tarifas {
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--var-color-white);
+  }
+  .container {
+    background-color: var(--var-color-white);
+    margin-top: 5.5rem;
+    border-top: 6px solid var(--var-color-green700);
+    border-bottom: 6px solid var(--var-color-green600);
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+  }
+  .bg_svg {
+    top: 0;
+    left: 0;
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+  }
+  .img-lat-izq {
+    position: relative;
+    width: 500px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .tarifas-detalle {
+    position: relative;
+    width: 1200px;
+    height: 100%;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 20px 20px rgba(1, 1, 1, 0.1);
+
+    h1 {
+      text-align: center;
+      background-color: var(--var-color-white);
+      color: var(--var-color-green500);
+      font-family: var(--var-font-title);
+      font-size: 6em;
+    }
+    p,
+    span {
+      color: var(--var-color-grey200);
+    }
+    p {
+      letter-spacing: 2px;
+    }
+    span {
+      letter-spacing: 2px;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    table {
+      margin: 0 auto;
+      width: 90%;
+      border-collapse: collapse;
+    }
+  }
+  tr {
+    height: 70px;
+    transition: 0.5s ease-in-out all;
+  }
+  td {
+    transition: 0.5s ease-in-out all;
+  }
+  tr:nth-child(odd) {
+    background-color: var(--var-color-green000);
+    transition: 0.5s ease-in-out all;
+  }
+  tr:nth-child(odd):hover td {
+    background-color: var(--var-color-green300);
+  }
+  tr:hover td {
+    background-color: #f4f3f3;
+  }
+  .icon {
+    width: 20px;
+    padding: 0.5em;
+    fill: var(--var-color-green100);
+  }
+
+  .precio {
+    color: var(--var-color-green700);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .detalle {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem;
+    gap: 25px;
+    svg {
+      color: var(--var-color-green500);
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0 0 25px 1px rgba(1, 1, 1, 0.2);
+      border-radius: 50%;
+      padding: 0.5rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+
+  .precio span {
+    font-size: 1.2rem;
+  }
+</style>

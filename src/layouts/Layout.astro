@@ -4,7 +4,7 @@ const { title = " texto por defecto" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,14 +13,20 @@ const { title = " texto por defecto" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot name="cabecera" />
+    <header>
+      <slot name="cabecera" />
+    </header>
     <main>
-      <slot />
+      <slot name="contenido" />
     </main>
   </body>
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Passions+Conflict&display=swap");
+    @font-face {
+      font-family: "adventureUnlimitedScript";
+      src: url("../assets/AdventuresUnlimited-ScriptRg.ttf");
+    }
     :root {
       --var-color-primary: #0c988c;
       --var-color-green400: #0bb2a4;
@@ -30,18 +36,18 @@ const { title = " texto por defecto" } = Astro.props;
       --var-color-green100: #a9eee8;
       --var-color-green200: #c0fffa;
       --var-color-green300: #cef4ed;
-      --var-color-green000: #e2f6f2;
+      --var-color-green000: #eaf6f3;
       --var-color-secondary: #663333;
       --var-color-secondary100: #391d1d;
       --var-color-acent: #7e501d;
       --var-color-grey000: #ebebe2;
-      --var-color-grey100: #bfbfbf;
+      --var-color-grey100: #dad8d8;
       --var-color-grey200: #8c8c8c;
       --var-color-grey300: #464646;
       --var-color-black: #000;
       --var-color-white: #fff;
       --var-font-type: "Noto Sans";
-      --var-font-title: "Corinthia", serif;
+      --var-font-title: "adventureUnlimitedScript", serif;
     }
     * {
       margin: 0;
@@ -49,6 +55,13 @@ const { title = " texto por defecto" } = Astro.props;
       box-sizing: border-box;
       font-family: var(--var-font-type);
       scroll-behavior: smooth;
+    }
+    main,
+    header {
+      margin: 0 auto;
+    }
+    body {
+      background-color: var(--var-color-green000);
     }
   </style>
 </html>

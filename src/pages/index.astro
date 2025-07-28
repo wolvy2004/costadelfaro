@@ -9,27 +9,54 @@ const links = [
   "Tarifas",
   "Reservas",
   "Contacto",
-  "Oportunidad",
 ];
 const componentesImportados = await Promise.all(
-  links.map((nombre) => import(`../components/${nombre}.astro`))
+  links.map((nombre) => import(`../components/sections/${nombre}.astro`))
 );
 ---
+
+<script>
+  let seccionesHTML = document.getElementsByTagName("section");
+  let secciones = Array.from(seccionesHTML);
+  let linksHTML = document.getElementsByClassName("link");
+  let links = Array.from(linksHTML);
+  const options = {
+    root: null,
+    rootMargin: "25px",
+    threshold: 0.25,
+  };
+
+  function linkActive(entry: IntersectionObserverEntry[]) {
+    let entrada = entry[0];
+
+    if (entrada.isIntersecting) {
+      links.forEach((link) => {
+        link.classList.toggle(
+          "active",
+          link.textContent?.toLowerCase().trim() ===
+            entrada.target.id.toLowerCase()
+        );
+      });
+    }
+  }
+  const observador = new IntersectionObserver(linkActive, options);
+
+  secciones.forEach((section) => {
+    observador.observe(section);
+  });
+</script>
 
 <Layout title="Bienvenidos a Costa del Faro">
   <Cabecera links={links} slot="cabecera" />
   {
     componentesImportados.map((Comp, index) => (
-      <Comp.default id={links[index]} />
+      <Comp.default id={links[index]} slot="contenido" />
     ))
   }
 </Layout>
 
 <style>
-  header {
-    z-index: 100;
-  }
-  #Home {
-    z-index: -1;
+  section {
+    height: fit-content;
   }
 </style>

@@ -6,28 +6,41 @@ import Link from "./Link.astro";
 const { links } = Astro.props;
 ---
 
+<script>
+  let links = document.getElementsByClassName("link");
+
+  Array.from(links).forEach((link) => {
+    link.addEventListener("click", () => {
+      const actives = document.getElementsByClassName("active");
+      if (actives.length > 0) {
+        actives[0].className = actives[0].className.replace("active", "");
+      }
+      link.className += " active";
+      console.log(link);
+    });
+  });
+  const sections = document.getElementsByTagName("section");
+</script>
 <nav id="menu">
   <ul>
-    {links.map((link: string) => <Link enlace={link} />)}
+    {links.map((link: string) => <Link enlace={link} active=true />)}
   </ul>
 </nav>
 <style>
   #menu {
-    position: absolute;
-    top: 0;
+    align-items: center;
+    display: flex;
+    justify-content: end;
     width: 100%;
-    height: 55px;
-    background-color: var(--var-color-white);
+    background: white;
+    height: 75px;
+    transition: 1s ease-in-out all;
   }
   #menu ul {
-    position: absolute;
+    width: 50%;
     z-index: 100;
-    background-color: var(--var-color-white);
-    height: 40px;
-    margin-top: 15px;
-    right: 0;
     display: flex;
-    transition: 0.5s ease-in all;
-    border-bottom: 1px solid var(--var-color-white);
+    justify-content: end;
+    gap: 10px;
   }
 </style>

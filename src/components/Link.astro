@@ -2,51 +2,44 @@
 interface enlace {
   type: string;
 }
-const { enlace } = Astro.props;
+const { enlace, active } = Astro.props;
 ---
 
-<li>
-  <a class="active" href={"#" + enlace}>{enlace}</a>
+<li class="link" class:list={[{ active: enlace == "Home" }]}>
+  <a href={"#" + enlace}>{enlace}</a>
   <div class="line"></div>
 </li>
 
 <style>
   li {
-    /*   */
-    width: 120px;
     height: 25px;
-    line-height: 25px;
-    position: relative;
-    font-size: 0.8em;
+    font-size: 1.2em;
+
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
     list-style: none;
     margin: auto;
   }
-  li a {
-    width: 120px;
-    height: 25px;
-    font-weight: semibold;
-    text-decoration: none;
-    color: var(--var-color-grey200);
-    transition: 0.5s ease-out color;
+  .link {
+    background-color: none;
+    border-radius: 3px;
   }
-  li:hover a,
-  .active {
-    color: var(--var-color-primary);
+  a {
+    color: #999;
   }
-
+  .active a {
+    color: var(--var-color-green400);
+    font-weight: 900;
+  }
   .line {
-    position: absolute;
-    background-color: var(--var-color-grey100);
-    bottom: -120;
-    left: 0;
-    width: 0px;
-    height: 3px;
-    transition: ease-in 0.3s all;
+    height: 0px;
+    width: 0%;
+    transition: 1s ease all;
   }
-  li:hover .line {
-    width: 120px;
+  .active .line {
+    height: 4px;
+    width: 100%;
+    background-color: var(--var-color-green200);
   }
 </style>
