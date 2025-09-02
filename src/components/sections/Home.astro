@@ -1,11 +1,12 @@
 ---
-import type { literal } from "astro:schema";
 import ReservasBox from "../vue/ReservasBox.vue";
 ---
 
-<section id="Home">
-  <h1 class="title">Un Paraiso Frente al mar</h1>
-  <p class="leyend">
+<section id="Home" class="w-full h-dvh">
+  <h1 class="title sm:text-7xl lg:text-5xl xl:text-8xl md:text-7xl">
+    Un Paraiso Frente al mar
+  </h1>
+  <p class="leyend md:text-sm sm:text-sm xs:text-xs xl:text-2xl">
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus alias
     dolor quos, quae dolores quidem omnis pariatur earum exercitationem neque
     voluptatem, magni deleniti. Unde placeat suscipit aut non cum ab.
@@ -13,15 +14,14 @@ import ReservasBox from "../vue/ReservasBox.vue";
   <div class="bg_gradiente"></div>
 
   <!-- ventana modal-->
-  <ReservasBox client:only />
+  <ReservasBox client:only class="sm:hidden xl:block" />
 
   <div class="white_space"></div>
 </section>
-<style>
+<style scoped>
   .title {
     z-index: 51;
     font-family: var(--var-font-title);
-    font-size: 7em;
     font-weight: 500;
     color: var(--var-color-white);
     position: absolute;
@@ -30,13 +30,9 @@ import ReservasBox from "../vue/ReservasBox.vue";
     width: 100%;
   }
   #Home {
-    width: 100%;
-    height: 100vh;
     background-image: url("../../assets/bg_home.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
     .leyend {
       z-index: 50;
       position: absolute;
@@ -44,7 +40,6 @@ import ReservasBox from "../vue/ReservasBox.vue";
       width: 70%;
       text-align: center;
       left: 50%;
-      font-size: 1.5rem;
       transform: translateX(-50%);
       color: var(--var-color-white);
     }

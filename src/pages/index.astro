@@ -1,6 +1,7 @@
 ---
 import Cabecera from "../components/Cabecera.astro";
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 const links = [
   "Home",
   "Aparts",
@@ -9,6 +10,7 @@ const links = [
   "Tarifas",
   "Reservas",
   "Contacto",
+  "Atractivos",
 ];
 const componentesImportados = await Promise.all(
   links.map((nombre) => import(`../components/sections/${nombre}.astro`))
@@ -48,15 +50,11 @@ const componentesImportados = await Promise.all(
 
 <Layout title="Bienvenidos a Costa del Faro">
   <Cabecera links={links} slot="cabecera" />
+
   {
     componentesImportados.map((Comp, index) => (
       <Comp.default id={links[index]} slot="contenido" />
     ))
   }
-</Layout>
-
-<style>
-  section {
-    height: fit-content;
-  }
-</style>
+  <Footer slot="footer" /></Layout
+>

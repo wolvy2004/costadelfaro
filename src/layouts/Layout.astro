@@ -16,9 +16,9 @@ const { title = " texto por defecto" } = Astro.props;
     <header>
       <slot name="cabecera" />
     </header>
-    <main>
-      <slot name="contenido" />
-    </main>
+
+    <slot name="contenido" />
+    <slot name="footer" />
   </body>
 
   <style>
@@ -61,6 +61,7 @@ const { title = " texto por defecto" } = Astro.props;
       margin: 0 auto;
     }
     body {
+      margin: 0 auto;
       background-color: var(--var-color-green000);
     }
   </style>

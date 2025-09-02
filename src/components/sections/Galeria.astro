@@ -2,12 +2,93 @@
 
 ---
 
+<script>
+  let container = document.getElementById("container");
+  for (let i = 1; i <= 28; i++) {
+    let img = document.createElement("img");
+    if (i < 10) {
+      img.src = "/images/aparts_00" + i + ".jpg";
+      img.alt = "foto apart";
+    } else {
+      img.src = "/images/aparts_0" + i + ".jpg";
+      img.alt = "foto apart";
+    }
+    img.classList.add("img-flexbox");
+
+    if (container) {
+      container.appendChild(img);
+    }
+  }
+
+  const images = document.getElementsByClassName("img-flexbox");
+  const images_array = Array.from(images);
+  console.log(images_array);
+
+  images_array.forEach((i) => {
+    i.addEventListener("click", () => {
+      images_array.forEach((img) => img.classList.remove("flexbox"));
+      i.classList.add("flexbox");
+      const flexbox = document.getElementsByClassName("flexbox");
+      let flexbox_array = Array.from(flexbox);
+
+      if (flexbox_array.length > 0) {
+        console.log(flexbox_array);
+        flexbox_array.forEach((f) => {
+          f.addEventListener("click", () => {
+            f.classList.remove("flexbox");
+          });
+        });
+      }
+    });
+  });
+</script>
 <section id="Galeria">
-  <h1>Hola esta es la seccion galeria</h1>
+  <h1>Galería de Fotos</h1>
+  <div class="container" id="container"></div>
 </section>
-<style>
-  section {
-    width: 100%;
-    height: 100vh;
+<style is:global>
+  #Galeria {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem;
+    background-color: #104c3c;
+    background-image: url("../../assets/galeria.svg");
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+  }
+
+  #Galeria .container {
+    position: relative;
+    width: 80%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    h1 {
+      font-family: var(--var-font-title);
+      color: var(--var-color-green100);
+      font-weight: 500;
+      font-size: 7rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+  }
+
+  .img-flexbox {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .img-flexbox.flexbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 </style>

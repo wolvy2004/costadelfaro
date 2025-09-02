@@ -1,7 +1,9 @@
 ---
+
 interface links {
   type: Array<String>;
 }
+import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
 const { links } = Astro.props;
 ---
@@ -19,23 +21,33 @@ const { links } = Astro.props;
       console.log(link);
     });
   });
-  const sections = document.getElementsByTagName("section");
+  
 </script>
-<nav id="menu">
+
+<nav id="menu_mobile" class="md:hidden sm:hidden  xl:hidden w-full h-full fixed inset-ring-amber-600 ">
+  <div class="bg-white rounded-lg m-2 p-2 h-13">
+    <a href=""><Icon name="mdi:menu" width='40px' height='40'></Icon></a>
+<a><Icon name="mdi:close" width='40px' height='40'></Icon></a>
+
+</div>
+  <ul class="w-full">
+    {links.map((link: string) => <Link enlace={link} active=true />)}
+  </ul>
+</nav>
+<nav id="menu" class="md:hidden sm:hidden  xl:flex">
   <ul>
     {links.map((link: string) => <Link enlace={link} active=true />)}
   </ul>
 </nav>
 <style>
-  #menu {
-    align-items: center;
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    background: white;
-    height: 75px;
-    transition: 1s ease-in-out all;
-  }
+    #menu {
+      align-items: center;
+      justify-content: end;
+      width: 100%;
+      background: white;
+      height: 75px;
+      transition: 1s ease-in-out all;
+    }
   #menu ul {
     width: 50%;
     z-index: 100;

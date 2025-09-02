@@ -4,8 +4,17 @@ import { IconUsers, IconSend } from "@iconify-prerendered/vue-mdi";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/themes/dark.css";
 import { Spanish } from "flatpickr/dist/l10n/es.js";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
+const reserva = ref({
+  fecha_desde: "",
+  fecha_hasta: "",
+  menores: 0,
+  mayores: 0,
+});
+
+const fecha_desde = ref();
+const fecha_hasta = ref();
 const rango = (inicio: number, final: number, pasos: number): Array<number> => {
   let arr: Array<number> = [];
   for (let i = inicio; i <= final; i += pasos) {
@@ -13,11 +22,53 @@ const rango = (inicio: number, final: number, pasos: number): Array<number> => {
   }
   return arr;
 };
-const adultos = ref(0);
-const menores = ref(0);
-const check_in = ref("");
+
 let cant_adultos: Array<number> = rango(1, 20, 1);
 let cant_menores: Array<number> = rango(1, 5, 1);
+
+const error_fecha_desde = computed(() => {
+  if (new Date(fecha_desde.value) < new Date()) {
+    return "la fecha no puede ser menor a la fecha actual";
+  }
+  if (
+    new Date(reserva.value.fecha_desde) > new Date(reserva.value.fecha_hasta)
+  ) {
+    return "la fecha no puede ser mayor a la fecha hasta";
+  }
+  return "";
+});
+
+const error_fecha_hasta = computed(() => {
+  let error = "";
+  if (new Date(reserva.value.fecha_hasta) < new Date()) {
+    return (error = "la fecha no puede ser menor a la fecha actual");
+  }
+  if (
+    new Date(reserva.value.fecha_hasta) < new Date(reserva.value.fecha_desde)
+  ) {
+    return (error = "la fecha no puede ser menor a la fecha desde");
+  }
+  return error;
+});
+
+const submit = () => {
+  localStorage.setItem("mayores", "");
+  localStorage.setItem("menores", "");
+  localStorage.setItem("fecha_hasta", "");
+  localStorage.setItem("fecha_desde", "");
+  if (
+    reserva.value.mayores &&
+    reserva.value.menores &&
+    reserva.value.fecha_desde &&
+    reserva.value.fecha_hasta
+  ) {
+    localStorage.setItem("mayores", reserva.value.mayores.toString());
+    localStorage.setItem("menores", reserva.value.menores.toString());
+    localStorage.setItem("fecha_hasta", reserva.value.fecha_hasta.toString());
+    localStorage.setItem("fecha_desde", reserva.value.fecha_desde.toString());
+    window.location.href = "#Reservas";
+  }
+};
 
 const mesesAbreviados: Object = {
   "01": "Ene",
@@ -63,8 +114,8 @@ const fecha = flatpickr("#check-in", {
           <IconUsers />
         </div>
 
-        <select class="input" v-model="adultos">
-          <option v-for="cant in cant_adultos" value="cant">
+        <select class="input" v-model="reserva.mayores">
+          <option v-for="(cant, key) in cant_adultos" :key="key" :value="cant">
             {{ cant < 10 ? "0" + cant : cant }}
           </option>
         </select>
@@ -73,31 +124,40 @@ const fecha = flatpickr("#check-in", {
           <IconUsers />
         </div>
 
-        <select class="input" v-model="menores">
+        <select class="input" v-model="reserva.menores">
           <option value="00">00</option>
-          <option v-for="cant in cant_menores" value="cant">
+          <option v-for="(cant, key) in cant_menores" :key="key" :value="cant">
             {{ cant < 10 ? "0" + cant : cant }}
           </option>
         </select>
       </div>
-      <div class="select_days_reservas">
-        <div id="SelectDateIn">
-          <label for="SelectDateIn">Desde</label>
-          <div id="check-in-flatpickr">
-            <input type="text" class="check-in" id="check_in" readonly />
-          </div>
-
-          <div class="fecha">
-            <div class="desde" id="desde"></div>
-            <span class="separador" id="separador">hasta</span>
-            <div class="hasta" id="hasta"></div>
-            <h3 id="datos-check-in">seleccionar fecha</h3>
-          </div>
-        </div>
-        <div class="SelectDateOut"></div>
+      <div class="m-1 p-1">
+        <label>Desde</label>
+        <input
+          class="bg-stone-200 m-1 p-1 rounded-md"
+          type="date"
+          id="desde"
+          name="desde"
+          v-model="reserva.fecha_desde"
+        />
+        <p class="text-xs text-red-600" v-if="error_fecha_desde">
+          {{ error_fecha_desde }}
+        </p>
       </div>
-
-      <button class="submit-reservas">
+      <div class="m-1 p-1">
+        <label>Hasta</label>
+        <input
+          class="bg-stone-200 m-1 p-1 rounded-md"
+          type="date"
+          id="hasta"
+          v-model="reserva.fecha_hasta"
+          name="hasta"
+        />
+        <p class="text-xs text-red-600" v-if="error_fecha_hasta">
+          {{ error_fecha_hasta }}
+        </p>
+      </div>
+      <button class="submit-reservas" @click="submit">
         <IconSend />
         <p>consultar</p>
       </button>

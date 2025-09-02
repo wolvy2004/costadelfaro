@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
   <article class="container">
     <div id="content_servicios">
       <picture class="img_lateral_derecha">
-        <img src="imgs/img_aparts (118).jpg" alt="" /></picture
+        <img src="images/aparts_001.jpg" alt="" /></picture
       >
       <div class="detalle-left">
         <h1>Servicios y Caracteristicas</h1>
@@ -67,7 +67,7 @@ import { Icon } from "astro-icon/components";
 
     <div id="caracteristicas">
       <picture class="img_lateral_izquierda">
-        <img src="imgs/img_aparts (115).jpg" alt="" /></picture
+        <img src="images/aparts_028.jpg" alt="" /></picture
       >
 
       <div class="detalle-right">
@@ -98,6 +98,12 @@ import { Icon } from "astro-icon/components";
       var(--var-color-green500),
       var(--var-color-green200)
     );
+    background-image: url("../../assets/servicios.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 3500px;
+    background-attachment: fixed;
+
     padding: 2rem;
   }
   .detalle-left {
@@ -108,8 +114,8 @@ import { Icon } from "astro-icon/components";
   .container {
     background: transparent;
     margin: 0 auto;
-    width: 70%;
-    padding-top: 240px;
+    width: 1600px;
+    padding-top: 150px;
   }
 
   .img_lateral_derecha {
@@ -135,13 +141,11 @@ import { Icon } from "astro-icon/components";
   #content_servicios,
   #caracteristicas {
     position: relative;
-
     display: flex;
   }
   #content_servicios ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 0;
   }
   #content_servicios {
     background-color: var(--var-color-green000);
@@ -149,19 +153,19 @@ import { Icon } from "astro-icon/components";
   }
   #content_servicios ul li {
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     display: grid;
-    margin: 0px 20px;
+    margin: 1px 20px;
     gap: 10px;
     grid-template-columns: 90px 1fr;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   h1 {
     font-family: var(--var-font-title);
     color: var(--var-color-green500);
     border: none;
-    margin-left: 2rem;
+    margin: 1rem 0 0;
     font-size: 6rem;
   }
   #caracteristicas {
@@ -171,15 +175,15 @@ import { Icon } from "astro-icon/components";
     ul {
       list-style: square;
       list-style-position: inside;
-      column-count: 3;
-      column-width: 25rem;
-      margin-left: 100px;
+      column-count: 2;
+      width: 80%;
+      margin-left: 50px;
       li {
         width: 100%;
         background-color: var(--var-color-green000);
-        padding: 0.25rem 1rem;
-        margin: 0.5rem 1rem;
-        font-size: 1.2rem;
+        padding: 0.25rem 0.5rem;
+        margin: 0.5rem;
+        font-size: 0.9rem;
         text-transform: capitalize;
       }
     }
@@ -189,7 +193,7 @@ import { Icon } from "astro-icon/components";
       font-size: clamp(16px, 2vw, 24px);
       font-style: italic;
       border: none;
-      margin: 40px 100px;
+      margin: 10px 50px;
       font-size: 1.4rem;
       color: var(--var-color-grey200);
     }

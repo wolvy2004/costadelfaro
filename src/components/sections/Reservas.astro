@@ -1,20 +1,235 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
-<section id="Reservas">
-  <h1 class="text-7xl">Hola esta es la seccion reservas</h1>
-  <form action="">
-    <div class="input">
-      <input type="text" name="" id="" />
-      <label for="">email</label>
-    </div>
-  </form>
+<script>
+  const fecha = new Date("10-12-2005");
+
+  let input_fecha_desde = document.getElementById("fecha_desde");
+  console.log(input_fecha_desde?.nodeValue);
+
+  console.log(input_fecha_desde?.title);
+  if (input_fecha_desde) {
+  }
+
+  const borrarCamposBoton = document.getElementById("btn-delete-fields");
+  let formulario = document.getElementById("form-contact") as HTMLFormElement;
+
+  borrarCamposBoton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    formulario?.reset();
+  });
+</script>
+<section id="Reservas" class="md:h-full sm:h-full xl:h-dvh">
+  <div class="Reservas-content">
+    <h1 class="text-8xl text-teal-400">Reservas</h1>
+    <form
+      action="post "
+      class="form-contact xl:flex md:block p-2 sm:block bg-stone-100 shadow-xl w-full"
+      id="form-contact"
+    >
+      <fieldset class="m-8 w-full">
+        <div class="input-container sm:w-2 md:w-2/3 xl:w-full">
+          <input type="text" id="name" required />
+          <label for="name">Nombre y Apellido</label>
+          <Icon name="mdi:user" width="30px" height="30px" class="icon" />
+        </div>
+        <div class="input-container">
+          <input type="email" id="email" required />
+          <label for="email">email</label>
+          <Icon
+            <Icon
+            width="30px"
+            height="30px"
+            name="mdi:email"
+            class="icon"
+          />
+        </div>
+        <div class="input-container">
+          <input type="tel" id="telefono" required />
+          <label for="telefono">telefono de contacto</label>
+          <Icon
+            <Icon
+            width="30px"
+            height="30px"
+            name="mdi:phone"
+            class="icon"
+          />
+        </div>
+        <div class="info-reserva">
+          <div class="input-container">
+            <input type="date" id="fecha_desde" />
+            <label for="observaciones">desde</label>
+            <Icon width="30px" height="30px" name="mdi:calendar" class="icon" />
+          </div>
+          <div class="input-container">
+            <input type="date" id="fecha_hasta" />
+            <label for="observaciones">hasta</label>
+            <Icon width="30px" height="30px" name="mdi:calendar" class="icon" />
+          </div>
+
+          <div class="input-container">
+            <input type="number" />
+            <label for="cantidad_adultos">Adultos</label>
+            <Icon width="30px" height="30px" name="mdi:person" class="icon" />
+          </div>
+
+          <div class="input-container">
+            <input type="number" />
+            <label for="cantidad_ninos">Menores</label>
+            <Icon
+              width="30px"
+              height="30px"
+              name="mdi:human-child"
+              class="icon"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="m-8 w-full">
+        <div class="input-container">
+          <textarea name="observaciones" id="observaciones"></textarea>
+          <label for="observaciones">observaciones</label>
+          <Icon width="30px" height="30px" name="mdi:pencil" class="icon" />
+        </div>
+        <div class="md:flex sm:block w-full">
+          <button
+            class="flex justify-center items-center bg-teal-600 rounded-md w-1/2 m-2 p-1 text-amber-100 hover:bg-teal-800 transition duration-300 ease-in-out"
+          >
+            <Icon width="30px" height="30px" name="mdi:trash" />borrar campos</button
+          >
+
+          <button
+            class="flex justify-center items-center bg-stone-600 rounded-md w-1/2 m-2 p-1 text-amber-100 hover:bg-stone-800 transition ease-in-out duration-500"
+          >
+            <Icon
+              width="30px"
+              height="30px"
+              name="mdi:send"
+              class="mx-2"
+            />Enviar</button
+          >
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </section>
+
 <style>
   #Reservas {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    background-color: var(--var-color-green600);
+    margin: 0 auto;
+
+    h1 {
+      text-align: center;
+      font-family: var(--var-font-title);
+
+      margin-bottom: 0px;
+    }
+  }
+  .info-reserva {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 10px;
+    padding: 25px;
+    background-color: var(--var-color-green300);
+  }
+  .Reservas-content {
+    padding: 1rem;
+    background-color: var(--var-color-green000);
+  }
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-content: stretch;
+  }
+  .form-contact {
+  }
+  .input-container {
+    position: relative;
+    margin: 15px 0px;
+    width: 100%;
+  }
+  input:focus {
+    outline: none;
+  }
+  input,
+  textarea {
+    background-color: var(--var-color-white);
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px 5px;
+    border: none;
+    padding-left: 50px;
+    color: var(--var-color-grey200);
+  }
+  textarea {
+    height: 300px;
+  }
+  .input-container label {
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    color: var(--var-color-green500);
+    transition: 0.5s ease;
+  }
+  input:valid ~ label,
+  input:focus ~ label,
+  textarea:focus ~ label,
+  textarea:valid ~ label {
+    top: -27px;
+    left: 0;
+    color: var(--var-color-green500);
+    font-size: 0.9em;
+  }
+  input:valid ~ .absolute top-0 left-0 m-2,
+  textarea:focus ~ .absolute top-0 left-0 m-2,
+  input:focus ~ .absolute top-0 left-0 m-2 {
+    color: var(--var-color-green200);
+    border-color: var(--var-color-green200);
+  }
+  .icon {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    color: var(--var-color-green400);
+  }
+  .botonera {
+    display: flex;
+  }
+  .submit-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    margin: 10px;
+    height: 50px;
+    font-weight: 500;
+    color: var(--var-color-white);
+    padding: 15px 15px;
+    transition: 0.5s ease-in-out;
+    &:nth-child(even) {
+      background-color: var(--var-color-secondary);
+      &:hover {
+        background-color: var(--var-color-secondary100);
+      }
+    }
+    &:nth-child(odd) {
+      background-color: var(--var-color-green500);
+      &:hover {
+        background-color: var(--var-color-green700);
+      }
+    }
   }
 </style>

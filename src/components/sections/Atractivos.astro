@@ -1,0 +1,56 @@
+---
+
+---
+
+<section id="Atractivos">
+  <h1>Atractivos Turísticos</h1>
+  <div class="container" id="container"></div>
+</section>
+<style scoped>
+  #Atractivos {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem;
+    background-color: #3c2a07;
+    background-image: url("../../assets/Atractivos.svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  #Atractivos .container {
+    position: relative;
+    width: 80%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  h1 {
+    font-family: var(--var-font-title);
+    color: white;
+    font-weight: 500;
+    font-size: 7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .img-flexbox {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .img-flexbox.flexbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+</style>
