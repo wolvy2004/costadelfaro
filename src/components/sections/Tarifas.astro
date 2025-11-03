@@ -1,249 +1,60 @@
 ---
-import IconUser from "../icons/IconUser.astro";
 const finicio_vig = "01-01-2025";
 const ffinal_vig = "30-06-2025";
-
 import { Icon } from "astro-icon/components";
 ---
 
 <section id="Tarifas">
   <article class="container">
-    <aside class="img-lat-izq">
-      <picture>
-        <img src="images/aparts_011.jpg" alt="" />
-      </picture>
-    </aside>
-    <div class="tarifas-detalle">
-      <h1>Tarifas</h1>
+    <picture class="w-full">
+      <img src="images/aparts_011.jpg" alt="" class="h-48" />
+    </picture>
+    <h1>Tarifas</h1>
+    <div class="flex gap-10 justify-center">
+      <div class="card">
+        <img
+          src="/images/aparts_001.jpg"
+          class="h-96 card-image-header object-cover"
+          alt=""
+        />
+        <h1 class="card-title">Aparts para 4 Personas</h1>
 
-      <table>
-        <tr>
-          <td class="sm:text-xs flex items-center"
-            ><span>Aparts 2 Personas</span>
-          </td>
-          <td class="flex justify-center items-center"
-            ><Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            /></td
-          >
-          <td class="precio">$ <span class="price-value">4700</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 3 Personas</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-          </td>
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 4 Personas ESTANDAR</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            /></td
-          >
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 4 Personas ADAPTADA</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-          </td>
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 4 Personas SUPERIOR</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-          </td>
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 4 Personas SUITE</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            /></td
-          >
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-        <tr
-          ><td class="detalle">
-            <span>Aparts 5 Personas</span>
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            />
-            <Icon
-              class="icon-user"
-              name="mdi:user"
-              width="30px"
-              height="30px"
-            /></td
-          >
-          <td class="precio">$ <span class="price-value">47000</span></td></tr
-        >
-      </table>
-      <div class="leyenda">
-        <p>
-          Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
-        </p>
-        <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
+        <div class="card-content">
+          <div class="flex">
+            <Icon name="mdi:account" width="32" height="32" />
+            <Icon name="mdi:account" width="32" height="32" />
+            <Icon name="mdi:account" width="32" height="32" />
+            <Icon name="mdi:account" width="32" height="32" />
+          </div>
+          <p>Valor</p>
+          <p class="text-2xl text-gray-400">Precio por noche</p>
+          <p class="text-6xl font-bold tracking-[.01rem] inline">$150.000</p>
+          <p>Frente al mar</p>
+        </div>
       </div>
+    </div>
+    <div class="leyenda">
+      <p>
+        Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
+      </p>
+      <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
     </div>
   </article>
 </section>
 <style>
   #Tarifas {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: var(--var-color-green100);
+    background-color: #73d0c8;
   }
   .container {
     background-color: var(--var-color-white);
-    margin-top: 5.5rem;
-    width: fit-content;
-    height: calc(100vh - 205px);
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
   }
+
   .bg_svg {
     top: 0;
     left: 0;
@@ -252,104 +63,95 @@ import { Icon } from "astro-icon/components";
     width: 100%;
     height: 100vh;
   }
-  .img-lat-izq {
+  .card {
+    border: 10px solid white;
+    width: 20%;
     position: relative;
-    width: 500px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  .tarifas-detalle {
-    position: relative;
-    width: 1200px;
-    min-width: 400px;
-    height: 100%;
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 20px 20px rgba(1, 1, 1, 0.1);
 
-    h1 {
-      text-align: center;
-      background-color: var(--var-color-white);
-      color: var(--var-color-green500);
-      font-family: var(--var-font-title);
-      font-size: 6em;
-    }
-    p,
-    span {
-      color: var(--var-color-grey200);
-    }
-    p {
-      letter-spacing: 1px;
-    }
-    span {
-      letter-spacing: 2px;
-      margin-top: 0.4rem;
-      font-size: 0.8rem;
-    }
-
-    table {
-      margin: 0 auto;
-      width: 90%;
-      border-collapse: collapse;
-    }
+    height: 500px;
+    background-color: #f4f4f4;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 100px rgba(1, 1, 1, 0.2);
   }
-  tr {
-    height: 60px;
-    transition: 0.5s ease-in-out all;
+  .card-image-header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 25% 25%;
   }
-  td {
-    transition: 0.5s ease-in-out all;
-  }
-  tr:nth-child(odd) {
-    background-color: var(--var-color-green000);
-    transition: 0.5s ease-in-out all;
-  }
-  tr:nth-child(odd):hover td {
-    background-color: var(--var-color-green300);
-  }
-  tr:hover td {
-    background-color: #f4f3f3;
-  }
-  .icon {
-    width: 20px;
-    padding: 0.5em;
-    fill: var(--var-color-green100);
-  }
-
-  .precio {
-    color: var(--var-color-green700);
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .detalle {
-    display: flex;
-    justify-content: start;
-    align-items: center;
+  .card-content {
+    position: absolute;
+    top: 250px;
+    z-index: 10;
+    box-shadow: 0px -10px 25px rgba(1, 1, 1, 0.2);
     padding: 1rem;
-    gap: 25px;
-    svg {
-      color: var(--var-color-green500);
-      background-color: rgb(255, 255, 255);
-      box-shadow: 0 0 25px 1px rgba(1, 1, 1, 0.2);
-      border-radius: 50%;
-      padding: 0.5rem;
-    }
-    span {
-      font-size: 1rem;
-    }
-  }
-
-  .precio span {
-    font-size: 1.2rem;
-  }
-  .leyenda {
-    margin-top: 25px;
-    flex-direction: column;
     display: flex;
+    background-color: #f1f1f1;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .card-title {
+    top: 200px;
+    position: absolute;
+    z-index: 2;
+    width: clamp(90%, 45%, 100%);
+    z-index: 10;
+    background-color: #f4f4f4;
+    padding: 1rem 0.25rem;
+    border-radius: 25px 25px 0 0;
+    text-align: center;
+    color: var(--var-color-green500);
+    font-size: 1.25em;
+  }
+
+  @media (max-width: 1024px) {
+    #Tarifas {
+      min-height: fit-content;
+      justify-content: center;
+
+      .img-lat-izq {
+        display: none;
+      }
+      .container {
+        width: 100%;
+      }
+      table {
+        width: 100%;
+        min-height: auto;
+      }
+      tr {
+        width: 80%;
+      }
+      .icon-user {
+        display: none;
+      }
+      .detalle {
+        width: 100%;
+      }
+      .precio {
+        width: 30%;
+      }
+      p {
+        letter-spacing: 0px;
+      }
+      span {
+        letter-spacing: 1px;
+        margin-top: 0.4rem;
+        font-size: 1rem;
+      }
+      .leyenda {
+        p {
+          font-size: 0.75rem;
+        }
+        span {
+          text-align: center;
+          font-size: 0.8rem;
+          width: 30%;
+        }
+      }
+    }
   }
 </style>

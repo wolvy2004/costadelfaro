@@ -1,68 +1,104 @@
 ---
 import ReservasBox from "../vue/ReservasBox.vue";
+import HomeHero from "../../assets/bg_home_hero.svg";
 ---
 
-<section id="Home" class="w-full h-dvh">
-  <h1 class="title sm:text-7xl lg:text-5xl xl:text-8xl md:text-7xl">
-    Un Paraiso Frente al mar
-  </h1>
-  <p class="leyend md:text-sm sm:text-sm xs:text-xs xl:text-2xl">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus alias
-    dolor quos, quae dolores quidem omnis pariatur earum exercitationem neque
-    voluptatem, magni deleniti. Unde placeat suscipit aut non cum ab.
+<section id="Home">
+  <h1 class="title">Un Paraiso Frente al mar</h1>
+  <p class="leyend">
+    El mejor lugar para descansar frente al mar, con todo lo que necesitas para
+    disfrutar de nuestros hermosos paisajes y el clima
   </p>
-  <div class="bg_gradiente"></div>
 
   <!-- ventana modal-->
-  <ReservasBox client:only class="sm:hidden xl:block" />
-
-  <div class="white_space"></div>
+  <div class="reservas-box">
+    <ReservasBox client:only />
+  </div>
+  <img
+    class="w-full bottom-0 left-0 z-0"
+    src={HomeHero.src}
+    alt="formas_onduladas"
+  />
 </section>
 <style scoped>
   .title {
-    z-index: 51;
+    z-index: 50;
     font-family: var(--var-font-title);
     font-weight: 500;
-    color: var(--var-color-white);
+    font-size: 6rem;
     position: absolute;
-    bottom: 280px;
+    bottom: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--var-color-white);
     text-align: center;
-    width: 100%;
   }
   #Home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-image: url("../../assets/bg_home.jpg");
     background-size: cover;
     background-position: center;
+    height: 100dvh;
+
     .leyend {
       z-index: 50;
       position: absolute;
-      bottom: 205px;
-      width: 70%;
+      bottom: 150px;
+      font-size: 1.25rem;
       text-align: center;
       left: 50%;
       transform: translateX(-50%);
       color: var(--var-color-white);
     }
   }
-  .bg_gradiente {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    background: linear-gradient(
-      0deg,
-      var(--var-color-green700),
-      15%,
-      transparent
-    );
-    height: 90vh;
+
+  @media (max-width: 1024px) {
+    .title {
+      font-size: 5rem;
+      width: 90dvw;
+      line-height: 2rem;
+      font-weight: 500;
+    }
+    #Home {
+      .leyend {
+        position: absolute;
+        bottom: 120px;
+        width: 80dvw;
+      }
+    }
+    .reservas-box {
+      display: none;
+    }
   }
-  .white_space {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    background-color: var(--var-color-white);
-    left: 0;
-    bottom: 0;
+  @media (max-width: 1440px) {
+    .title {
+      width: 100%;
+    }
+  }
+  @media (max-width: 680px) {
+    .reservas-box {
+      display: none;
+    }
+    .title {
+      font-size: 4rem;
+      width: 90dvw;
+      line-height: 3rem;
+      font-weight: 500;
+    }
+    #Home {
+      img {
+        position: absolute;
+      }
+      .leyend {
+        font-size: 1rem;
+        position: absolute;
+        bottom: 120px;
+        width: 80dvw;
+      }
+    }
   }
 </style>

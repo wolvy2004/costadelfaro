@@ -68,10 +68,10 @@ import { Icon } from "astro-icon/components";
   #Contacto {
     flex-direction: column;
     display: flex;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
-    width: 70%;
-    background-color: var(--var-color-white);
+    
+    background-color: #f6f6f6;
     height: 100vh;
     margin: 0 auto;
     box-sizing: 10px 10px 25px 5px rgba(1, 1, 1, 0.7);
@@ -88,7 +88,7 @@ import { Icon } from "astro-icon/components";
     padding: 2rem;
     margin: 0 auto;
     width: 80%;
-    background-color: var(--var-color-green000);
+    background-color: #E7FDFC;
     display: grid;
     gap: 2rem;
     align-items: center;
@@ -190,5 +190,22 @@ import { Icon } from "astro-icon/components";
     text-align: center;
     font-size: 1.2rem;
     color: var(--var-color-grey200);
+  }
+  @media (max-width: 680px) {
+    #Contacto {
+      width: 100dvw;
+      height: 100dvh;
+      display: grid;
+      .contacto-content {
+        display: flex;
+        flex-direction: column;
+      }
+      .map {
+        display: none;
+      }
+      .form-contact {
+        width: 90dvw;
+        
+    }
   }
 </style>

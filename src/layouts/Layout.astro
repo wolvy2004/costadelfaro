@@ -7,7 +7,11 @@ const { title = " texto por defecto" } = Astro.props;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -16,12 +20,15 @@ const { title = " texto por defecto" } = Astro.props;
     <header>
       <slot name="cabecera" />
     </header>
-
-    <slot name="contenido" />
-    <slot name="footer" />
+    <main>
+      <slot name="contenido" />
+    </main>
+    <footer class="w-full">
+      <slot name="footer" />
+    </footer>
   </body>
 
-  <style>
+  <style is:global>
     @import url("https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Passions+Conflict&display=swap");
     @font-face {
       font-family: "adventureUnlimitedScript";
@@ -43,7 +50,8 @@ const { title = " texto por defecto" } = Astro.props;
       --var-color-grey000: #ebebe2;
       --var-color-grey100: #dad8d8;
       --var-color-grey200: #8c8c8c;
-      --var-color-grey300: #464646;
+      --var-color-amber: #ffbf00;
+      --var-color-brown: #464646;
       --var-color-black: #000;
       --var-color-white: #fff;
       --var-font-type: "Noto Sans";
@@ -56,13 +64,20 @@ const { title = " texto por defecto" } = Astro.props;
       font-family: var(--var-font-type);
       scroll-behavior: smooth;
     }
-    main,
-    header {
-      margin: 0 auto;
-    }
+
     body {
       margin: 0 auto;
-      background-color: var(--var-color-green000);
+      background-color: var(--var-color-green600);
+    }
+    @media (max-width: 680px) {
+      body {
+        width: 100dvw;
+        margin: 0 auto;
+      }
+      main,
+      section {
+        width: 100dvw;
+      }
     }
   </style>
 </html>

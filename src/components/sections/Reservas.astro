@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import BgBottomServicios from "../../assets/bg_bottom_servicios.svg";
+import BgTopContacto from "../../assets/bg_top_contacto.svg";
 ---
 
 <script>
@@ -20,15 +22,16 @@ import { Icon } from "astro-icon/components";
     formulario?.reset();
   });
 </script>
-<section id="Reservas" class="md:h-full sm:h-full xl:h-dvh">
-  <div class="Reservas-content">
+<section id="Reservas" class="relative">
+  <img
+    src={BgBottomServicios.src}
+    class="w-full absolute top-0 left-0"
+    alt=""
+  />
+  <article class="container-form-reserva">
     <h1 class="text-8xl text-teal-400">Reservas</h1>
-    <form
-      action="post "
-      class="form-contact xl:flex md:block p-2 sm:block bg-stone-100 shadow-xl w-full"
-      id="form-contact"
-    >
-      <fieldset class="m-8 w-full">
+    <form action="post " class="form-contact" id="form-contact">
+      <fieldset>
         <div class="input-container sm:w-2 md:w-2/3 xl:w-full">
           <input type="text" id="name" required />
           <label for="name">Nombre y Apellido</label>
@@ -86,7 +89,7 @@ import { Icon } from "astro-icon/components";
           </div>
         </div>
       </fieldset>
-      <fieldset class="m-8 w-full">
+      <fieldset>
         <div class="input-container">
           <textarea name="observaciones" id="observaciones"></textarea>
           <label for="observaciones">observaciones</label>
@@ -112,24 +115,53 @@ import { Icon } from "astro-icon/components";
         </div>
       </fieldset>
     </form>
-  </div>
+  </article>
+  <img
+    src={BgTopContacto.src}
+    alt="fondo ondulado"
+    class="w-full absolute bottom-0"
+  />
 </section>
 
 <style>
   #Reservas {
+    background-image: url("../../assets/bg_reservas.jpg");
+    background-repeat: no-repeat;
+    background-clip: cover;
+    background-position: bottom;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .container-form-reserva {
+    z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0 auto;
-
+    background-color: rgba(250, 250, 250, 0.7);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    width: 70%;
+    height: 70%;
+    box-shadow: 0 0 55px rgba(1, 1, 1, 0.2);
     h1 {
       text-align: center;
       font-family: var(--var-font-title);
-
+      color: var(--var-color-green700);
       margin-bottom: 0px;
     }
+  }
+  .form-contact {
+    padding: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-around;
   }
   .info-reserva {
     display: grid;
@@ -141,19 +173,15 @@ import { Icon } from "astro-icon/components";
     padding: 25px;
     background-color: var(--var-color-green300);
   }
-  .Reservas-content {
-    padding: 1rem;
-    background-color: var(--var-color-green000);
-  }
+
   fieldset {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
-
     align-content: stretch;
   }
-  .form-contact {
-  }
+
   .input-container {
     position: relative;
     margin: 15px 0px;
@@ -229,6 +257,31 @@ import { Icon } from "astro-icon/components";
       background-color: var(--var-color-green500);
       &:hover {
         background-color: var(--var-color-green700);
+      }
+    }
+  }
+  @media (max-width: 680px) {
+    #Reservas {
+      height: fit-content;
+      .form-contact {
+        background-color: var(--var-color-grey000);
+        display: flex;
+        padding: 2rem;
+        width: 90%;
+        flex-wrap: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .input-container {
+        margin: 0.5rem;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+      }
+      textarea {
+        margin: 0.1rem;
+        border: 2px solid red;
       }
     }
   }

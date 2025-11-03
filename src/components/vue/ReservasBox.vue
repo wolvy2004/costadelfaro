@@ -194,7 +194,7 @@ article {
   height: 75px;
   background-color: var(--var-color-white);
   box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.5);
-  bottom: 75px;
+  bottom: 50px;
   z-index: 1;
   border-radius: 5px;
 
