@@ -8,16 +8,25 @@ const { links } = Astro.props;
 
 <script>
   let menu_lateral = document.getElementById("menu-lateral");
+  let links = document.getElementsByClassName("link");
   let btn_menu_close = document.getElementById("menu-lateral-close");
   let menu_activador = document.querySelector(".menu-lateral-active");
+
+  Array.from(links).forEach((element) => {
+    element.addEventListener("click", () => {
+      if (menu_lateral) {
+        menu_lateral.style.transform = "translateX(300px)";
+      }
+    });
+  });
   menu_activador?.addEventListener("click", () => {
     if (menu_lateral) {
-      menu_lateral.style.display = "Block";
+      menu_lateral.style.transform = "translateX(0px)";
     }
   });
   btn_menu_close?.addEventListener("click", () => {
     if (menu_lateral) {
-      menu_lateral.style.display = "none";
+      menu_lateral.style.transform = "translateX(300px)";
     }
   });
   window.addEventListener("scroll", () => {
@@ -37,8 +46,9 @@ const { links } = Astro.props;
   <section class="content-menu">
     <div id="logo"><Logo /></div>
     <div id="logo_h"><img src="src/assets/logo_h.png" alt="" /></div>
+
+    <Menu id="menu" links={links} />
     <Icon name="mdi:menu" width="32" height="32" class="menu-lateral-active" />
-    <Menu class="menu" id="menu" links={links} />
   </section>
 </header>
 <style scoped>
@@ -49,32 +59,29 @@ const { links } = Astro.props;
   }
   .menu-lateral-active {
     display: none;
-    position: absolute;
-    top: 25px;
-    right: 30px;
   }
   .cabecera {
-    top: 0;
-    left: 0;
+    background: linear-gradient(#fff 20%, transparent);
     width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
     position: fixed;
-    display: flex;
-    justify-content: space-around;
     z-index: 99;
     transition: ease-in 0.5s all;
   }
   .content-menu {
     display: flex;
-    gap: 100px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 35px;
   }
+
   #logo {
-    position: relative;
-    top: 0px;
     opacity: 1;
     z-index: 40;
-    scale: 1.2;
+    scale: 1;
     transition: 1s ease-in-out all;
     transition-delay: 1s;
   }
@@ -95,10 +102,10 @@ const { links } = Astro.props;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
-    padding: 0;
-    margin: 0;
     box-shadow: 0px 5px 25px 10px rgba(0, 0, 0, 0.2);
-
+    .menu {
+      background-color: transparent;
+    }
     #logo {
       opacity: 0;
       display: none;
@@ -111,13 +118,18 @@ const { links } = Astro.props;
     }
   }
   @media (max-width: 1280px) {
+    .menu {
+      background-color: transparent;
+    }
     .menu-lateral-active {
       display: block;
     }
     .content-menu {
+      margin: 0 4rem;
       display: flex;
       justify-content: space-between;
     }
+
     #logo_h {
       position: absolute;
       top: 0;
@@ -125,8 +137,7 @@ const { links } = Astro.props;
       opacity: 1;
       z-index: 40;
       margin-left: 0em;
-      scale: 1.1;
-
+      scale: 1;
       transition: 1s ease-in-out all;
       transition-delay: 1s;
     }
@@ -134,34 +145,31 @@ const { links } = Astro.props;
   @media (max-width: 640px) {
     .menu-lateral-active {
       display: block;
+      margin: 2rem;
+    }
+    .content-menu {
+      margin: 0;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
     }
 
-    .content-menu {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-
-      #logo {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        opacity: 1;
-        z-index: 40;
-        margin-left: 0em;
-        scale: 1;
-        transition: 1s ease-in-out all;
-        transition-delay: 1s;
-      }
-      #logo_h {
-        top: 10px;
-        opacity: 1;
-        padding: 0;
-        transform: translateX(-30%);
-        z-index: 40;
-        scale: 0.75;
-        transition: 1s ease-in-out all;
-        transition-delay: 1s;
-      }
+    #logo {
+      opacity: 1;
+      z-index: 40;
+      scale: 0.8;
+      transition: 1s ease-in-out all;
+      transition-delay: 1s;
+    }
+    #logo_h {
+      top: 10px;
+      opacity: 1;
+      padding: 0;
+      transform: translateX(-30%);
+      z-index: 40;
+      scale: 0.75;
+      transition: 1s ease-in-out all;
+      transition-delay: 1s;
     }
   }
 </style>

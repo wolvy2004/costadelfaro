@@ -4,40 +4,28 @@ import HomeHero from "../../assets/bg_home_hero.svg";
 ---
 
 <section id="Home">
-  <h1 class="title">Un Paraiso Frente al mar</h1>
-  <p class="leyend">
-    El mejor lugar para descansar frente al mar, con todo lo que necesitas para
-    disfrutar de nuestros hermosos paisajes y el clima
-  </p>
-
+  <div class="leyend">
+    <h1 class="title">Un Paraiso Frente al mar</h1>
+    <p>
+      El mejor lugar para descansar frente al mar, con todo lo que necesitas
+      para disfrutar de nuestros hermosos paisajes y el clima
+    </p>
+  </div>
   <!-- ventana modal-->
   <div class="reservas-box">
     <ReservasBox client:only />
   </div>
-  <img
-    class="w-full bottom-0 left-0 z-0"
-    src={HomeHero.src}
-    alt="formas_onduladas"
-  />
+  <img class="img-bottom" src={HomeHero.src} alt="formas_onduladas" />
 </section>
 <style scoped>
-  .title {
-    z-index: 50;
-    font-family: var(--var-font-title);
-    font-weight: 500;
-    font-size: 6rem;
+  .img-bottom {
     position: absolute;
-    bottom: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--var-color-white);
-    text-align: center;
+    bottom: clamp(-110px, -180px, 90px);
   }
   #Home {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-image: url("../../assets/bg_home.jpg");
     background-size: cover;
@@ -45,29 +33,38 @@ import HomeHero from "../../assets/bg_home_hero.svg";
     height: 100dvh;
 
     .leyend {
-      z-index: 50;
       position: absolute;
-      bottom: 150px;
-      font-size: 1.25rem;
+      bottom: 200px;
+      z-index: 99;
+      font-size: 1rem;
       text-align: center;
-      left: 50%;
-      transform: translateX(-50%);
       color: var(--var-color-white);
+      .title {
+        z-index: 50;
+        font-family: var(--var-font-title);
+        font-size: 6rem;
+        line-height: 6rem;
+        color: var(--var-color-white);
+        text-align: center;
+      }
+      p {
+        width: clamp(90% 50% 70%);
+      }
     }
   }
 
   @media (max-width: 1024px) {
-    .title {
-      font-size: 5rem;
-      width: 90dvw;
-      line-height: 2rem;
-      font-weight: 500;
-    }
     #Home {
       .leyend {
         position: absolute;
         bottom: 120px;
         width: 80dvw;
+        .title {
+          font-size: 3rem;
+          width: 90dvw;
+          line-height: 2rem;
+          font-weight: 500;
+        }
       }
     }
     .reservas-box {
@@ -83,12 +80,7 @@ import HomeHero from "../../assets/bg_home_hero.svg";
     .reservas-box {
       display: none;
     }
-    .title {
-      font-size: 4rem;
-      width: 90dvw;
-      line-height: 3rem;
-      font-weight: 500;
-    }
+
     #Home {
       img {
         position: absolute;
@@ -96,8 +88,13 @@ import HomeHero from "../../assets/bg_home_hero.svg";
       .leyend {
         font-size: 1rem;
         position: absolute;
-        bottom: 120px;
+        bottom: 50px;
         width: 80dvw;
+        .title {
+          font-size: 3rem;
+          line-height: 3rem;
+          font-weight: 500;
+        }
       }
     }
   }

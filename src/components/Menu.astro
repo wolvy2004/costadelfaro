@@ -37,10 +37,13 @@ import { Icon } from "astro-icon/components";
   .menu ul {
     display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 15px;
     
   }
   #menu-lateral-close{
+    position: absolute;
+    top: 0;
+    left: 0;
     border: 2px solid white;
     border-radius: 50%;
     margin: 2rem;
@@ -48,7 +51,9 @@ import { Icon } from "astro-icon/components";
     color: white;
   }
   .menu-lateral{
-    display: none;
+    transform: translateX(300px);
+    transition: 0.5s ease-out all;
+
   }
   
   @media (max-width:1280px) {
@@ -61,7 +66,6 @@ import { Icon } from "astro-icon/components";
       justify-content: end;
       align-items: end;
       z-index: 99;
-      display: none;
       position: absolute;
       width: 300px;
       top: 0px;
@@ -72,13 +76,16 @@ import { Icon } from "astro-icon/components";
       box-shadow: inset   -20px 0px 25px 0px rgba(1, 46, 40, 0.5);
     }
     .menu-lateral ul{
-      margin-top: 25px;
-      right: 0;
+      position: absolute;
+      top: 75px;
+      left: 0;
       display: flex;
       flex-direction: column;
+      width: 100%;
       gap: 15px;
       
       li{
+        width: 100%;
         padding: 0.5rem;
         border-radius: 0;
         width: 100%;
