@@ -180,7 +180,6 @@ a:hover {
 
 article {
   width: 100%;
-  height: 100vh;
 }
 
 .reservas_box {

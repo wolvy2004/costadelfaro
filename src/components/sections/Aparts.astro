@@ -204,11 +204,12 @@ import { Image } from "astro:assets";
 </section>
 <style scoped>
   #Aparts {
+    position: relative;
     background-color: #f6f6f6;
     padding: 0px;
     margin: 0 auto;
-
-    box-shadow: 0 0 50px 5px rgba(1, 1, 1, 0.5);
+    height: 100%;
+    
   }
   .icon-servicios {
     margin: 2rem 1rem;
@@ -253,9 +254,10 @@ import { Image } from "astro:assets";
     font-family: var(--var-font-title);
     text-align: center;
     position: relative;
-    font-size: 7rem;
+    font-size: 5rem;
     color: var(--var-color-green400);
-    margin-bottom: 2rem;
+    margin-top: 50px;
+    margin-bottom: 1rem;
     &::before {
       content: "";
       top: 50%;
@@ -277,8 +279,8 @@ import { Image } from "astro:assets";
   }
   .content {
     margin: 0 auto;
-    width: clamp(50%, 1400px, 1400px);
-    height: max-content;
+    width: clamp(50%, 1000px, 1200px);    
+    padding: 2rem;
   }
 
   .card:nth-child(even) {
@@ -344,9 +346,9 @@ import { Image } from "astro:assets";
       scale: 1.1;
     }
   }
-  @media (max-width:1024px){
+  @media (max-width:1366px){
     #Aparts, .content{
-      width: 90%;
+      
     }
     .descripcion .title{
       font-size: 4rem;

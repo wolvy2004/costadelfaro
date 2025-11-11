@@ -23,11 +23,11 @@ import { Icon } from "astro-icon/components";
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
         </div>
-        <p>Valor</p>
-        <p class="">Precio por noche</p>
-        <p class="">$150.000</p>
+
+        <p class="desc-precio">Precio por noche</p>
+        <p class="txt-precio">$150.000</p>
         <p>Frente al mar</p>
-        <button class="btn">Quiero saber mas...</button>
+        <button class="btn">Reservar</button>
       </div>
     </div>
     <div class="card">
@@ -44,11 +44,11 @@ import { Icon } from "astro-icon/components";
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
         </div>
-        <p>Valor</p>
-        <p class="">Precio por noche</p>
-        <p class="">$150.000</p>
+
+        <p class="desc-precio">Precio por noche</p>
+        <p class="txt-precio">$150.000</p>
         <p>Frente al mar</p>
-        <button class="btn">Quiero saber mas...</button>
+        <button class="btn">Reservar</button>
       </div>
     </div>
     <div class="card">
@@ -66,11 +66,11 @@ import { Icon } from "astro-icon/components";
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
         </div>
-        <p>Valor</p>
-        <p class="">Precio por noche</p>
-        <p class="">$150.000</p>
+
+        <p class="desc-precio">Precio por noche</p>
+        <p class="txt-precio">$150.000</p>
         <p>Frente al mar</p>
-        <button class="btn">Quiero saber mas...</button>
+        <button class="btn">Reservar</button>
       </div>
     </div>
     <div class="card">
@@ -82,34 +82,50 @@ import { Icon } from "astro-icon/components";
       <h1 class="card-title">Aparts para 4 Personas</h1>
 
       <div class="card-content">
-        <div class="flex">
+        <div class="flex icons">
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
           <Icon name="mdi:account" width="32" height="32" />
         </div>
-        <p>Valor</p>
-        <p class="">Precio por noche</p>
-        <p class="">$150.000</p>
+
+        <p class="desc-precio">Precio por noche</p>
+        <p class="txt-precio">$150.000</p>
         <p>Frente al mar</p>
-        <button class="btn">Quiero saber mas...</button>
+        <button class="btn">Reservar</button>
       </div>
     </div>
   </article>
   <div class="leyenda">
     <p>
       Precios Vigentes desde {finicio_vig} hasta el {ffinal_vig}
+      -- <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
     </p>
-    <span>Tarifa por noche de alojamiento, expresada en moneda local</span>
   </div>
 </section>
 <style>
+  .icons {
+    border: 1px solid red;
+  }
+  .txt-precio {
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  .desc-precio {
+    text-align: center;
+    color: #777;
+    margin-top: 1rem;
+    line-height: 0.5rem;
+    border-bottom: 1px solid #777;
+    padding-bottom: 0.7rem;
+    width: 70%;
+  }
   #Tarifas {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
     height: 100vh;
@@ -117,17 +133,18 @@ import { Icon } from "astro-icon/components";
   }
   .titulo-tarifas {
     margin-top: 7rem;
+    line-height: 7rem;
     color: #fff;
     font-family: var(--var-font-title);
-    font-size: 10rem;
+    font-size: 7rem;
     z-index: 10;
   }
   .container-tarifas {
     background-color: var(--var-color-white);
-    margin: 0 auto;
     width: clamp(90%, 90%, 20%);
     display: flex;
     justify-content: center;
+    align-items: start;
   }
   .bg_svg {
     top: 0;
@@ -138,18 +155,21 @@ import { Icon } from "astro-icon/components";
     height: 100vh;
   }
   .card {
+    position: relative;
     scale: 0.9;
-    border: 10px solid white;
     width: 25%;
-    height: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
-    border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 0 100px rgba(1, 1, 1, 0.2);
     transition: 0.5s all ease-in-out;
     cursor: pointer;
     &:hover {
-      scale: 1.1;
+      scale: 1.05;
       z-index: 12;
     }
   }
@@ -157,46 +177,41 @@ import { Icon } from "astro-icon/components";
     top: 0;
     position: absolute;
     width: 100%;
-    height: 25%;
+    height: 40%;
     object-fit: cover;
   }
   .card-image-header {
     position: absolute;
-    width: 100%;
     top: 0;
     left: 0;
-    border-radius: 0 0 25% 25%;
+
+    width: 100%;
+    height: 360px;
   }
   .card-content {
+    position: relative;
     width: 100%;
-    position: absolute;
-    top: 250px;
-    z-index: 10;
-    padding: 1rem;
+    z-index: 40;
+    padding: 0.5rem;
     display: flex;
     background-color: #fff;
     flex-direction: column;
     align-items: center;
   }
   .card-title {
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    z-index: 2;
-    width: clamp(90%, 45%, 100%);
-    z-index: 10;
-    background-color: #fff;
-    padding: 1rem 0.25rem;
-    border-radius: 25px 25px 0 0;
+    margin-top: 200px;
+    color: white;
     text-align: center;
-    color: var(--var-color-green500);
-    font-size: 1.5em;
+    width: clamp(90%, 45%, 100%);
+    z-index: 40;
+    padding: 0.5rem 0.25rem;
+    text-align: center;
+    font-size: 1.75em;
   }
   .btn {
     background-color: rgb(72, 196, 196);
-    margin: 1rem 2rem;
-    padding: 1rem 2rem;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     color: white;
     transition: 0.5s all ease-in-out;
@@ -205,8 +220,138 @@ import { Icon } from "astro-icon/components";
       color: rgb(53, 150, 150);
     }
   }
+  @media (max-width: 1360px) {
+    .icons {
+      border: 1px solid red;
+    }
+    .txt-precio {
+      font-size: 3rem;
+      font-weight: 900;
+    }
+    .desc-precio {
+      text-align: center;
+      color: #777;
+      margin-top: 1rem;
+      line-height: 0.5rem;
+      border-bottom: 1px solid #777;
+      padding-bottom: 0.7rem;
+      width: 70%;
+    }
+    #Tarifas {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff;
+    }
+    .titulo-tarifas {
+      margin-top: 7rem;
+      line-height: 7rem;
+      color: #fff;
+      font-family: var(--var-font-title);
+      font-size: 7rem;
+      z-index: 10;
+    }
+    .container-tarifas {
+      background-color: var(--var-color-white);
+      width: clamp(90%, 90%, 20%);
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+    .bg_svg {
+      top: 0;
+      left: 0;
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100vh;
+    }
+    .card {
+      position: relative;
+      scale: 0.9;
+      width: 25%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      overflow: hidden;
+      box-shadow: 0 0 100px rgba(1, 1, 1, 0.2);
+      transition: 0.5s all ease-in-out;
+      cursor: pointer;
+      &:hover {
+        scale: 1.05;
+        z-index: 12;
+      }
+    }
+    .image-header {
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 30%;
+      object-fit: cover;
+    }
+    .card-image-header {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      top: 0;
+      left: 0;
+    }
+    .card-content {
+      position: relative;
+      width: 100%;
+      z-index: 40;
+      padding: 0.5rem;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-title {
+      text-align: center;
+      width: clamp(90%, 45%, 100%);
+      margin: 0;
+      z-index: 40;
+      padding: 0.5rem 0.25rem;
+      text-align: center;
+      color: var(--var-color-green500);
+      font-size: 1.5em;
+    }
+    .btn {
+      background-color: rgb(72, 196, 196);
+      margin: 0.5rem 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: white;
+      transition: 0.5s all ease-in-out;
+      &:hover {
+        background-color: rgb(190, 248, 248);
+        color: rgb(53, 150, 150);
+      }
+    }
+  }
 
   @media (max-width: 1024px) {
+    .titulo-tarifas {
+      margin-top: 0.5rem;
+      color: #fff;
+      font-family: var(--var-font-title);
+      font-size: 5rem;
+      z-index: 10;
+    }
+    .image-header {
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 10%;
+      object-fit: cover;
+    }
     #tarifas {
       width: 100dvh;
       overflow: hidden;

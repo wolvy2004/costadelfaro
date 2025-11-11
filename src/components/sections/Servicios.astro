@@ -4,11 +4,11 @@ import TopServiciosBg from '../../assets/bg_top_servicios.svg'
 import BgHomeHero from '../../assets/bg_home_hero.svg'
 ---
 
-<section id="Servicios" class="relative">
-      <img src={BgHomeHero.src}  class="w-full absolute bottom-0 left-0 img">
+<section id="Servicios" >
+
   <article class="container-servicios">
-    <img src={TopServiciosBg.src} class="absolute top-0 left-0 w-full" alt="">
-    <div id="content_servicios">
+
+    <div id="servicios">
       <picture class="img_lateral_derecha">
         <img src="images/aparts_001.jpg" alt="" /></picture
       >
@@ -110,25 +110,20 @@ import BgHomeHero from '../../assets/bg_home_hero.svg'
     background-position: center;
     background-size: 3500px;
     background-attachment: fixed;
-    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100dvh;
   }
 
-  .detalle-left,
-  .detalle-right {
-    padding: 4rem;
-  }
+  
 
   .container-servicios {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     justify-content: center;
-    width: 1400px;
-    height: max-content;
-    box-shadow: 0 0 100px rgba(1, 1, 1, 1);
+    width: clamp(100dvh, 1200px, 1400px);
+    box-shadow: 0 0 10px rgba(1, 1, 1, 1);
   }
 
   .img_lateral_derecha {
@@ -146,20 +141,20 @@ import BgHomeHero from '../../assets/bg_home_hero.svg'
       height: 100%;
     }
   }
-  #content_servicios,
+  #servicios,
   #caracteristicas {
     position: relative;
     display: flex;
     flex-wrap: nowrap;
   }
-  #content_servicios ul {
+  #servicios ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  #content_servicios {
+  #servicios {
     background-color: var(--var-color-green000);
   }
-  #content_servicios ul li {
+  #servicios ul li {
     align-items: center;
     padding: 0.5rem;
     display: grid;
@@ -173,8 +168,8 @@ import BgHomeHero from '../../assets/bg_home_hero.svg'
     font-family: var(--var-font-title);
     color: var(--var-color-green500);
     border: none;
-    margin: 1rem 3rem;
-    font-size: 6rem;
+    margin: 1rem 3rem 0 3rem;
+    font-size: 5rem;
   }
   #caracteristicas {
     background-color: var(--var-color-white);
@@ -213,13 +208,13 @@ import BgHomeHero from '../../assets/bg_home_hero.svg'
     border-radius: 50%;
   }
   @media (max-width: 1024px) {
-    #content_servicios {
+    #servicios {
       h1 {
         font-size: 6rem;
         line-height: 4rem;
       }
     }
-    #content_servicios ul {
+    #servicios ul {
       grid-template-columns: 1fr;
       grid-template-rows: 4fr;
     }
@@ -237,11 +232,11 @@ import BgHomeHero from '../../assets/bg_home_hero.svg'
       background: transparent;
       width: 100vdw;
     }
-    .content_servicios {
+    .servicios {
       margin-right: 0px;
       padding: 0px;
     }
-    #content_servicios ul {
+    #servicios ul {
       display: grid;
       grid-template-columns: 1fr;
     }
