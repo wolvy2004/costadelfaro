@@ -1,6 +1,6 @@
 ---
 import "../styles/tailwind.css";
-const { title = " texto por defecto" } = Astro.props;
+const { title = " Costa del Faro" } = Astro.props;
 ---
 
 <!doctype html>
@@ -57,7 +57,12 @@ const { title = " texto por defecto" } = Astro.props;
       --var-font-type: "Noto Sans";
       --var-font-title: "adventureUnlimitedScript", serif;
     }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding: var(--scroll-padding);
+    }
     * {
+      font-size: 12px;
       margin: 0;
       padding: 0;
       box-sizing: border-box;

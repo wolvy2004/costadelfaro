@@ -7,10 +7,20 @@ import Link from "./Link.astro";
 const { links } = Astro.props;
 import { Icon } from "astro-icon/components";
 ---
+<script>
+let headertop = document.getElementById('menu')
 
+const headerHeight = headertop.offsetHeight;
+console.log(headertop.offsetHeight);
+document.documentElement.style.setProperty(
+  "--scroll-padding",
+  headerHeight + "px"
+);
+
+</script>
 
   
-<nav class="menu" >
+<nav class="menu" id="menu" >
  
   <ul>
     
