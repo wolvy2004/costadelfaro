@@ -17,7 +17,8 @@
     "flatpickr": "^4.6.13",
     "nanostore": "^1.2.1",
     "nanostores": "^0.11.3",
-    "pnpm": "^10.6.2"
+    "pnpm": "^10.6.2",
+    "resend": "^6.4.2"
   },
   "devDependencies": {
     "@iconify-json/ic": "^1.2.2",

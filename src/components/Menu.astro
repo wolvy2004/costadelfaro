@@ -9,13 +9,16 @@ import { Icon } from "astro-icon/components";
 ---
 <script>
 let headertop = document.getElementById('menu')
-
-const headerHeight = headertop.offsetHeight;
-console.log(headertop.offsetHeight);
-document.documentElement.style.setProperty(
+if(headertop){
+  const headerHeight = headertop.offsetHeight;
+  console.log(headertop.offsetHeight);
+  document.documentElement.style.setProperty(
   "--scroll-padding",
   headerHeight + "px"
 );
+}
+
+
 
 </script>
 
@@ -41,7 +44,6 @@ document.documentElement.style.setProperty(
       justify-content: end;
       align-items: center;
       padding: 1rem;
-      height: 75px;
       transition: 1s ease-in-out all;
     }
   .menu ul {

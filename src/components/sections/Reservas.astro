@@ -36,42 +36,35 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
     </picture>
     <div class="content-form">
       <h1 class="title-reservas">Reservas</h1>
-      <form action="post " class="form-contact" id="form-contact">
+      <form
+        action="post"
+        class="form-contact"
+        id="form-contact"
+        action="/api/send_email"
+      >
         <fieldset>
           <div class="input-container sm:w-2 md:w-2/3 xl:w-full">
             <input type="text" id="name" required />
             <label for="name">Nombre y Apellido</label>
-            <Icon name="mdi:user" width="30px" height="30px" class="icon" />
+            <Icon name="mdi:user" width="20px" height="20px" class="icon" />
           </div>
           <div class="input-container">
             <input type="email" id="email" required />
             <label for="email">email</label>
-            <Icon
-              <Icon
-              width="30px"
-              height="30px"
-              name="mdi:email"
-              class="icon"
-            />
+            <Icon width="20px" height="20px" name="mdi:email" class="icon" />
           </div>
           <div class="input-container">
             <input type="tel" id="telefono" required />
             <label for="telefono">telefono de contacto</label>
-            <Icon
-              <Icon
-              width="30px"
-              height="30px"
-              name="mdi:phone"
-              class="icon"
-            />
+            <Icon width="20px" height="20px" name="mdi:phone" class="icon" />
           </div>
           <div class="info-reserva">
             <div class="input-container">
               <input type="date" id="fecha_desde" />
               <label for="observaciones">desde</label>
               <Icon
-                width="30px"
-                height="30px"
+                width="20px"
+                height="20px"
                 name="mdi:calendar"
                 class="icon"
               />
@@ -80,8 +73,8 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
               <input type="date" id="fecha_hasta" />
               <label for="observaciones">hasta</label>
               <Icon
-                width="30px"
-                height="30px"
+                width="20px"
+                height="20px"
                 name="mdi:calendar"
                 class="icon"
               />
@@ -90,15 +83,15 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
             <div class="input-container">
               <input type="number" />
               <label for="cantidad_adultos">Adultos</label>
-              <Icon width="30px" height="30px" name="mdi:person" class="icon" />
+              <Icon width="24px" height="24px" name="mdi:person" class="icon" />
             </div>
 
             <div class="input-container">
               <input type="number" />
               <label for="cantidad_ninos">Menores</label>
               <Icon
-                width="30px"
-                height="30px"
+                width="24px"
+                height="24px"
                 name="mdi:human-child"
                 class="icon"
               />
@@ -109,23 +102,19 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
           <div class="input-container">
             <textarea name="observaciones" id="observaciones"></textarea>
             <label for="observaciones">observaciones</label>
-            <Icon width="30px" height="30px" name="mdi:pencil" class="icon" />
+            <Icon width="16px" height="16px" name="mdi:pencil" class="icon" />
           </div>
-          <div class="md:flex sm:block gap-2.5 sm:p-6">
-            <button
-              class="flex justify-center items-center bg-teal-600 rounded-md w-1/2 m-2 p-1 text-amber-100 hover:bg-teal-800 transition duration-300 ease-in-out"
-            >
-              <Icon width="30px" height="30px" name="mdi:trash" />borrar campos</button
+          <div class="actions">
+            <button class="btn-del" id="btn-delete-fields">
+              <Icon width="20px" height="20px" name="mdi:trash" />borrar campos</button
             >
 
-            <button
-              class="flex justify-center items-center bg-stone-600 rounded-md w-1/2 m-2 p-1 text-amber-100 hover:bg-stone-800 transition ease-in-out duration-500"
-            >
+            <button class="btn-send">
               <Icon
-                width="30px"
-                height="30px"
+                width="20px"
+                height="20px"
                 name="mdi:send"
-                class="mx-2"
+                class="icon-animated"
               />Enviar</button
             >
           </div>
@@ -141,6 +130,53 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
 />
 
 <style>
+  .actions {
+    display: flex;
+    justify-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  .btn-send,
+  .btn-del {
+    overflow: hidden;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: 0.5s ease-in-out all;
+  }
+  .btn-send {
+    color: white;
+    background-color: rgb(17, 130, 127);
+    &:hover {
+      background-color: rgb(24, 168, 163);
+      scale: 1.05;
+    }
+    &:hover > .icon-animated {
+      animation: move 1s;
+    }
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
   #Reservas {
     position: relative;
     background: linear-gradient(#fff, #e4e2e2);
@@ -149,6 +185,7 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    height: 100dvh;
   }
   .title-reservas {
     font-size: 6rem;
@@ -163,9 +200,7 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
       height: 100%;
     }
   }
-  .content-form {
-    padding: 3rem;
-  }
+
   .content-reservas {
     z-index: 10;
     display: grid;
@@ -194,9 +229,8 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
     align-items: center;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    gap: 10px;
-    padding: 25px;
-    background-color: var(--var-color-green300);
+    gap: 5px;
+    padding: 15px;
   }
 
   fieldset {
@@ -288,8 +322,6 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
   @media (max-width: 1360px) {
     .image {
       width: 250px;
-      background-color: red;
-
       img {
         object-fit: cover;
         width: 100%;
@@ -300,13 +332,15 @@ import imagenLateral from "../../assets/img-aparts-36.jpg";
       z-index: 10;
       display: grid;
       grid-template-columns: 250px 1fr;
-      background-color: rgba(250, 250, 250, 0.7);
+      background-color: rgba(250, 250, 250, 0.8);
       border-radius: 10px;
       align-content: stretch;
       backdrop-filter: blur(10px);
       width: 100%;
+
       box-shadow: 0 0 55px rgba(1, 1, 1, 0.2);
       h1 {
+        padding: 1rem;
         line-height: 3rem;
         text-align: center;
         font-family: var(--var-font-title);
