@@ -18,8 +18,8 @@ import { Icon } from "astro-icon/components";
       <iframe
         title="ubicacion del apart"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5181323041666!2d-62.83963082311223!3d-41.0576656263064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95f680059706e88b%3A0x115853ed82704d44!2sCosta%20del%20Faro%20Apart%20Hotel!5e0!3m2!1ses-419!2sar!4v1708641586888!5m2!1ses-419!2sar"
-        width="800"
-        height="600"
+        width="600"
+        height="400"
         style="border: 0"
         allowfullscreen=""
         loading="lazy"
@@ -70,11 +70,9 @@ import { Icon } from "astro-icon/components";
     display: flex;
     justify-content: top;
     align-items: center;
-    
-    background-color: #f6f6f6;
+    background-color: #ffffff;
     height: 100vh;
     margin: 0 auto;
-    box-sizing: 10px 10px 25px 5px rgba(1, 1, 1, 0.7);
     h1 {
       text-align: center;
       font-family: var(--var-font-title);
@@ -87,8 +85,7 @@ import { Icon } from "astro-icon/components";
   .contacto-content {
     padding: 2rem;
     margin: 0 auto;
-    width: 80%;
-    background-color: #E7FDFC;
+    background-color: #f3f1f1;
     display: grid;
     gap: 2rem;
     align-items: center;
@@ -151,7 +148,6 @@ import { Icon } from "astro-icon/components";
   .botonera {
     display: flex;
     align-items: center;
-
     gap: 20px;
   }
   .submit-message {
@@ -161,12 +157,9 @@ import { Icon } from "astro-icon/components";
     gap: 20px;
     border-radius: 5px;
     border: none;
-    width: 250px;
-    margin: 0 auto;
     text-transform: uppercase;
     font-weight: 700;
     color: var(--var-color-white);
-    padding: 15px 15px;
     transition: 0.5s ease-in-out;
     &:nth-child(even) {
       background-color: var(--var-color-secondary);
